@@ -10,6 +10,7 @@ GitHub:
 # Kivy stuff
 import kivy
 from kivy.app import App
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.pagelayout import PageLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
@@ -18,10 +19,17 @@ from kivy.uix.popup import Popup
 # Other stuff
 import json
 
+
+from kivy.uix.progressbar import ProgressBar
+
+class HexonConsole(GridLayout):
+	pass
 # ----------------------- MAIN CLASS ----------------------- #
+
 class HexonApp(App):
 	def build(self):
-		return PageLayout()
+		return GridLayout()
+
 
 # ----------------------- EXECUTING ------------------------ #
 HexonApp().run()
