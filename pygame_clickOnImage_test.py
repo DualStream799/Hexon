@@ -1,5 +1,5 @@
 import pygame
-"""
+
 pygame.init()
 width=350;
 height=400
@@ -9,7 +9,7 @@ redSquare = pygame.image.load("hex_logo_small.png").convert()
 x = 20; # x coordnate of image
 y = 30; # y coordinate of image
 screen.blit(redSquare ,  ( x,y)) # paint to screen
-#pygame.display.flip() # paint screen one time
+pygame.display.flip() # paint screen one time
  
 running = True
 while (running):
@@ -23,6 +23,7 @@ while (running):
                 print('clicked on image')
 #loop over, quite pygame
 pygame.quit()
-"""
 
+"""
 print(help(pygame.image.load))
+"""

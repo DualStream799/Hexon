@@ -28,76 +28,84 @@ pygame.font.init()
 display_width = 800
 display_height = 450
 screen = pygame.display.set_mode((display_height, display_width))
-pygame.display.set_caption("Hexon v1.0", "/hex_logo_small.png")
+pygame.display.set_caption('Hexon v1.0', 'hex_logo_small.png')
 # Loading Dsplay Updater:
 clock = pygame.time.Clock()
 # Loading Mouse Position:
-# mouse_pos = pygame.mouse.get_pos()
+mouse_pos = pygame
 
 # ------------------------------------ IMAGES ------------------------------------------------- #
 
 # Home Page Background:
-# home_page_original = pygame.image.load(r".\Images\Background\home_original.png")
-home_page_purple = pygame.image.load("Images/Background/home_purple_small.png").convert()
-# home_page_green = pygame.image.load(r".\Images\Background\home_green.png")
-# home_page_blue = pygame.image.load(r".\Images\Background\home_blue.png")
-# home_page_pink = pygame.image.load(r".\Images\Background\home_pink.png")
-# home_page_orange = pygame.image.load(r".\Images\Background\home_orange.png")
-# home_page_gray = pygame.image.load(r".\Images\Background\home_gray.png")
+# home_page_original = pygame.image.load(r'.\Images\Background\home_original.png')
+home_page_purple = pygame.image.load(r'.\Images\Background\home_purple_small.png')
+# home_page_green = pygame.image.load(r'.\Images\Background\home_green.png')
+# home_page_blue = pygame.image.load(r'.\Images\Background\home_blue.png')
+# home_page_pink = pygame.image.load(r'.\Images\Background\home_pink.png')
+# home_page_orange = pygame.image.load(r'.\Images\Background\home_orange.png')
+# home_page_gray = pygame.image.load(r'.\Images\Background\home_gray.png')
 
 # Left Page Background:
-# left_page_original = pygame.image.load(r".\Images\Background\left_page_original.png")
-# left_page_purple = pygame.image.load(r".\Images\Background\home_purple_small.png")
-# left_page_green = pygame.image.load(r".\Images\Background\home_green.png")
-# left_page_blue = pygame.image.load(r".\Images\Background\home_blue.png")
-# left_page_pink = pygame.image.load(r".\Images\Background\home_pink.png")
-# left_page_orange = pygame.image.load(r".\Images\Background\home_orange.png")
-# left_page_gray = pygame.image.load(r".\Images\Background\home_gray.png")
+# left_page_original = pygame.image.load(r'.\Images\Background\left_page_original.png')
+# left_page_purple = pygame.image.load(r'.\Images\Background\home_purple_small.png")
+# left_page_green = pygame.image.load(r'.\Images\Background\home_green.png')
+# left_page_blue = pygame.image.load(r'.\Images\Background\home_blue.png')
+# left_page_pink = pygame.image.load(r'.\Images\Background\home_pink.png')
+# left_page_orange = pygame.image.load(r'.\Images\Background\home_orange.png')
+# left_page_gray = pygame.image.load(r'.\Images\Background\home_gray.png')
 
 # Right Page Background:
-# right_page_original = pygame.image.load(r".\Images\Background\right_page_original.png")
-# right_page_purple = pygame.image.load(r".\Images\Background\home_purple_small.png")
-# right_page_green = pygame.image.load(r".\Images\Background\home_green.png")
-# right_page_blue = pygame.image.load(r".\Images\Background\home_blue.png")
-# right_page_pink = pygame.image.load(r".\Images\Background\home_pink.png")
-# right_page_orange = pygame.image.load(r".\Images\Background\home_orange.png")
-# right_page_gray = pygame.image.load(r".\Images\Background\home_gray.png")
+right_page_original = pygame.image.load(r'.\Images\Background\right_page_original_small.png')
+right_glass_original = pygame.image.load(r'.\Images\Background\right_glass_original_small.png')
+# right_page_purple = pygame.image.load(r'.\Images\Background\home_purple_small.png')
+# right_page_green = pygame.image.load(r'.\Images\Background\home_green.png')
+# right_page_blue = pygame.image.load(r'.\Images\Background\home_blue.png')
+# right_page_pink = pygame.image.load(r'.\Images\Background\home_pink.png')
+# right_page_orange = pygame.image.load(r'.\Images\Background\home_orange.png')
+# right_page_gray = pygame.image.load(r'.\Images\Background\home_gray.png')
 
 # Loading Page Background:
-#
 
+
+# Navigation Bar:
+navbar_original = pygame.image.load(r'.\Images\Background\navbar_original.png')
 
 # Buttons:
-but_pressed = pygame.image.load('Images/Buttons/hex_but_press.png').convert()
-# but_back_left = pygame.image.load(r".\Images\Buttons\hex_but_back_left.png")
-but_back_right = pygame.image.load("Images/Buttons/hex_but_back_right.png").convert()
-but_close = pygame.image.load("Images/Buttons/hex_but_close.png").convert()
-but_menu = pygame.image.load("Images/Buttons/hex_but_menu.png").convert()
-but_play = pygame.image.load("Images/Buttons/hex_but_play.png").convert()
-but_reload = pygame.image.load("Images/Buttons/hex_but_reload.png").convert()
-but_volon = pygame.image.load("Images/Buttons/hex_but_volon.png").convert()
-but_voloff = pygame.image.load("Images/Buttons/hex_but_voloff.png").convert()
-but_list = pygame.image.load("Images/Buttons/hex_but_list.png").convert()
-# but_profile = pygame.image.load(r".\Images\Buttons\hex_but_profile.png")
-# but_config = pygame.image.load(r".\Images\Buttons\hex_but_config.png")
-# but_locked = pygame.image.load(r".\Images\Buttons\hex_but_locked.png")
+but_pressed = pygame.image.load(r'.\Images\Buttons\hex_but_press.png')
+# but_back_left = pygame.image.load(r'.\Images\Buttons\hex_but_back_left.png')
+but_back_right = pygame.image.load(r'.\Images\Buttons\hex_but_back_right.png')
+but_close = pygame.image.load(r'.\Images\Buttons\hex_but_close.png')
+but_menu = pygame.image.load(r'.\Images\Buttons\hex_but_menu.png')
+but_play = pygame.image.load(r'.\Images\Buttons\hex_but_play.png')
+but_reload = pygame.image.load(r'.\Images\Buttons\hex_but_reload.png')
+but_volon = pygame.image.load(r'.\Images\Buttons\Small\hex_but_volon_small.png')
+but_voloff = pygame.image.load(r'.\Images\Buttons\Small\hex_but_voloff_small.png')
+but_list = pygame.image.load(r'.\Images\Buttons\hex_but_list.png')
+# but_profile = pygame.image.load(r'.\Images\Buttons\hex_but_profile.png')
+# but_config = pygame.image.load(r'.\Images\Buttons\hex_but_config.png')
+# but_locked = pygame.image.load(r'.\Images\Buttons\hex_but_locked.png')
 
 # Cursor:
-cursor_up_center = pygame.image.load("Images/Cursor/cursor_original.png").convert()
+cursor_up_center = pygame.image.load(r'.\Images\Cursor\cursor_original.png')
 cursor_up_right = pygame.transform.rotate(cursor_up_center, 60)
 cursor_up_left = pygame.transform.rotate(cursor_up_center, -60)
 cursor_down_center = pygame.transform.rotate(cursor_up_center, 180)
 cursor_down_right = pygame.transform.rotate(cursor_up_center, 120)
 cursor_down_left = pygame.transform.rotate(cursor_up_center, -120)
 
-
-# Positions:
-but_play_pos = ((display_height-165)/2), ((display_width-180)/2) 
+# Itens Positions:
+but_play_pos = [[(display_height - 165)/2, (display_width - 180)/2],
+                [(display_height + 165)/2, (display_width + 180)/2]]
+but_reload_pos = [[],
+                  []]
+but_volon_pos = [[92, 35],
+                 [92 + 131, 214 + 142]]
+but_voloff_pos = [[227, 214],
+                  [227 + 125, 214 + 142]]
 
 # ------------------------------- OBJECTS CLASSES --------------------------------------------- #
+
 # Main element on game (User controled):
-
-
 class HexCursor:
     # Loading all pre set configurations:
     position_list = ["UC", "UR", "DR", "DC", "DL", "UL"]
@@ -132,7 +140,6 @@ class HexCursor:
 
 # ------------------------------ PLAYERS CLASSES ---------------------------------------------- #
 
-
 class PlayerOne:
     pass
 
@@ -140,52 +147,92 @@ class PlayerOne:
 class PlayerTwo:
     pass
 
+# ------------------------------- MENUS FUNCTIONS ---------------------------------------------- #
 
-# ------------------------------- MENUS CLASSES ---------------------------------------------- #
+def HomePage():
+    # Loading Home Page (showing all the elements which compose the menu):
+    screen.blit(home_page_purple, (0, 0))
+    # screen.blit(but_close, (0, 0))
+    screen.blit(but_play, (but_play_pos[0][0], but_play_pos[0][1]))
 
-class HomePage:
-    def __init__(self):
-        screen.blit(home_page_purple, (0, 0))
-        screen.blit(but_play, ((display_height-165)/2, (display_width-180)/2))
-        # screen.blit(but_profile, (0, 0))
-        # screen.blit(but_config, (0,360))
-        # screen.blit(but_close, ((display_height-165)/2, (display_width-180)/2))
-        for event in pygame.event.get():
-            # Quit Command:
-            if event.type == pygame.QUIT:
-                runner = False
-            if event.type == pygame.MOUSEBUTTONUP:
-                mouse_pos = pygame.mouse.get_pos()
-                # clicked_sprites = [s for s in sprites if s.rect.collidepoint(pos)]
-            # Mouse Click Detection (and cosequential actions, depending where is clicked):
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mouse_pos[0], mouse_pos[1] = event.pos
-                # Click on Play Button (Loads GamePage):
-                if but_play.get_rect().collidepoint(mouse_pos):
-                    # screen.blit(but_pressed, ((display_height-165)/2, (display_width-180)/2))
-                    # game_runner = True
-                    # GamePage()
-                    print("Cliked is working!")
+    screen.blit(but_volon, (but_volon_pos[0][0], but_volon_pos[0][1]))
+    screen.blit(but_voloff, (227, 214))
+  
+    # screen.blit(but_profile, (0, 0))
+    # screen.blit(but_config, (0,360))
+    # screen.blit(but_close, ((display_height-165)/2, (display_width-180)/2))
+
+    # Screen Commands:
+    for event in pygame.event.get():
+        # Quit Command (Calls 'GameEnd' function):
+        if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
+            GameEnd()
+        # Mouse Click Detection (and cosequential actions, depending where/what is clicked):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # Mouse Position(axis x and -y coordinates):
+            mouse_pos_x, mouse_pos_y = event.pos
+            # PLAY BUTTON Clicked:
+            if (mouse_pos_x > but_play_pos[0][0] and mouse_pos_x < but_play_pos[1][0]) and (mouse_pos_y > but_play_pos[0][1] and mouse_pos_y < but_play_pos[1][1]):
+                # GamePage()
+                print('clicked on play')
+
+def LeftPage():
+    # Loading Left Page (showing all the elements which compose the menu):
+    screen.blit(left_page_original, (0, 0))
+    # screen.blit(but_close, (0, 0))
+    #screen.blit(but_play, ((display_height-165)/2, (display_width-180)/2))
+    # Screen Commands:
+    for event in pygame.event.get():
+        # Quit Command:
+        if event.type == pygame.QUIT:
+            GameEnd()
+        # Mouse Click Detection (and cosequential actions, depending where/what is clicked):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # Set the x, y postions of the mouse click
+            mouse_pos_x, mouse_pos_y = event.pos
+            #  ......... BUTTON Clicked:
+            if (mouse_pos_x > but_play_pos[0][0] and mouse_pos_x < but_play_pos[1][0]) and (mouse_pos_y > but_play_pos[0][1] and mouse_pos_y < but_play_pos[1][1]):
+                print('clicked on ......')
 
 
-class LeftPage:
+def RightPage():
+    # Loading Right Page (showing all the elements which compose the menu):
+    screen.blit(right_page_original, (0, 0))
+    screen.blit(right_glass_original, (0, 0))
+    screen.blit(but_back_right, (92, -16))
+    screen.blit(but_volon, (92, 214))
+    screen.blit(but_voloff, (227, 214))
+  
+    # Screen Commands:
+    for event in pygame.event.get():
+        # Quit Command(created quit the 'for loop'):
+        if event.type == pygame.QUIT:
+            GameEnd()
+            #break
+        # Mouse Click Detection (and cosequential actions, depending wherbut_volone/what is clicked):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # Set the x, y postions of the mouse click
+            mouse_pos_x, mouse_pos_y = event.pos
+            print(mouse_pos_x, "\n", mouse_pos_y)
+            #  VOLUME ON BUTTON Clicked:
+            if (mouse_pos_x > but_volon_pos[0][0] and mouse_pos_x < but_play_pos[1][0]) and (mouse_pos_y > but_volon_pos[0][1] and mouse_pos_y < but_play_pos[1][1]):
+                print('clicked on Vol On')
+            #  VOLUME ON BUTTON Clicked:
+            #if (mouse_pos_x > but_voloff_pos[0][0] and mouse_pos_x < but_play_pos[1][0]) and (mouse_pos_y > but_voloff_pos[0][1] and mouse_pos_y < but_play_pos[1][1]):
+             #   print('clicked on Vol Off')
+            
 
-    def __init__(self):
-        pass
 
+def GamePage():
+    # screen.blit(loading_page, (0, 0))
+    # time.sleep(10)
+    print("Youre playing...")
 
-class RightPage:
-
-    def __init__(self):
-        pass
-
-
-class GamePage:
-
-    def __init__(self):
-        # screen.blit(loading_page, (0, 0))
-        # time.sleep(10)
-        print("Youre playing...")
+def GameEnd():
+    # Ends PyGame
+    pygame.quit()
+    # Ends Console
+    quit()
 
 # -------------------------------- GENERATION ------------------------------------------------ #
 
@@ -193,7 +240,7 @@ runner = True
 
 # --------------------------------- EXECUTION ------------------------------------------------ #
 # Main Loop
-if runner is True:
+while (runner):
     HomePage()
     # Comands for each usable button:
     """
@@ -203,7 +250,6 @@ if runner is True:
             runner = False
         # Rotate Left Command
     """
-        
     pygame.display.update()
     clock.tick(60)
 
@@ -212,7 +258,7 @@ if runner is True:
 # Ends PyGame
 pygame.quit()
 # Ends Console
-# quit()
+quit()
 
 # ----------------------------------- IDEAS ------------------------------------------------- #
 
