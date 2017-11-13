@@ -12,8 +12,8 @@ Current Version: 1.0.0
 # Used:
 import pygame
 import time
-
 # Unused:
+import random
 # import requests
 # import math
 # import json
@@ -28,11 +28,14 @@ pygame.font.init()
 display_width = 800
 display_height = 450
 screen = pygame.display.set_mode((display_height, display_width))
+"""
+display_width = 0
+display_height = 0
+screen = pygame.display.set_mode((display_height, display_width), pygame.FULLSCREEN)
+"""
 pygame.display.set_caption('Hexon v1.0', 'hex_logo_small.png')
 # Loading Dsplay Updater:
 clock = pygame.time.Clock()
-# Loading Mouse Position:
-mouse_pos = pygame
 
 # ------------------------------------ IMAGES ------------------------------------------------- #
 
@@ -102,9 +105,15 @@ cursor_down_center = pygame.transform.rotate(cursor_up_center, 180)
 cursor_down_right = pygame.transform.rotate(cursor_up_center, 120)
 cursor_down_left = pygame.transform.rotate(cursor_up_center, -120)
 
-# Itens Positions:
-but_play_pos = [[int((display_height - 165)/2), int((display_width - 180)/2)],
-                [int((display_height + 165)/2), int((display_width + 180)/2)]]
+# Colliders:
+
+# Planets:
+planet_original = pygame.image.load(r'.\Images\Objects\Planets\planet_original.png')
+
+# ----------------------------------- POSITIONS ------------------------------------------------ #
+
+# Buttons:
+but_play_pos = [[int((display_height - 165)/2), int((display_width - 180)/2)], [int((display_height + 165)/2), int((display_width + 180)/2)]]
 but_close_pos = [[169, 146], [169 + 109, 146 + 120]]
 but_volon_pos = [[338, 243], [338 + 106, 243 + 122]]
 but_voloff_pos = [[338, 243], [338 + 106, 243 + 122]]
@@ -114,6 +123,10 @@ but_pause_pos = [[2, 243], [2 + 109, 243 + 120]]
 but_config_pos = [[2, 243], [2 + 109, 243 + 120]]
 but_contact_pos = [[2, 243], [2 + 109, 243 + 120]]
 """
+
+# Planets:
+planet_pos = [[int((display_height - 121)/2), int((display_width - 121)/2)], [int((display_height + 121)/2), int((display_width + 121)/2)]]
+
 # ------------------------------- OBJECTS CLASSES --------------------------------------------- #
 
 # Main element on game (User controled):
@@ -148,12 +161,49 @@ def HexCursor():
     """
 # ------------------------------ OBJECTS CLASSES ---------------------------------------------- #
 
+class Planet:
+    def __init__(self, screen):
+        pygame.sprite.Sprite.__init__(self)
+        # Image we want to tranform
+        self.imageMaster = pygame.image.load('.\Images\Background\Game Screen\space_background.png')
+        self.imageMaster = self.imageMaster.convert()
+        # setting the Sprot image attribute to our transformation image
+        self.image = self.imageMaster
+        # get the rect of the image
+        self.rect = self.image.get_rect()
+        # pu it in the center of the screen no matter what resolution is
+        self.rect.center = ((screen.get_width()/2), screen.get_height()/2)
+        # sprites direction based on mathematical rotation of degrees
+        self.dir = 0
+
+    def update(self):
+        """To rotate properly, rather than continuing to rotate an blit our image (which will be 
+           distort it beyond belief after a few transformations), we need to keep loading/rotating our imageMaster to the proper degree"""
+        # get original center because new Rect will change with image transformation
+        old_center = self.rect.center
+        # use pygame.transform.rotate(<image_to_rotate>, <turn degrees>)
+        self.image = pygame.transform.rotate(self.imageMaster, self.dir)
+        # get new Rect
+        self.rect = self.image.get_rect()
+        # set new center to original center
+        self.rect.center = old_center
+
+    def turn_left(self):
+        self += 15
+        if self.dir > 360:
+            self.dir = 15
+
+    def turn_right(self):
+        self += 15
+        if self.dir > 360:
+            self.dir = 15
+
+
 
 # Collider Class (Objects which must be reflected):
 class Collider:
-  def __init__(self):
-
-
+    def __init__(self):
+        pass
 # ------------------------------ PLAYERS CLASSES ---------------------------------------------- #
 
 class PlayerOne:
@@ -166,8 +216,10 @@ class PlayerTwo:
 # ------------------------------- MENUS FUNCTIONS ---------------------------------------------- #
 
 def HomePage():
+    while (runner):
     # Loading all pre set configurations:
     Volume_on = True
+
     # Loading Home Page (showing all the elements which compose the menu):
     screen.blit(home_page_purple, (0, 0))
     screen.blit(but_close, (but_close_pos[0][0], but_close_pos[0][1]))
@@ -231,9 +283,12 @@ def LoadingPage():
 
 
 def GamePage():
+    angle = 15
     # Loading Home Page (showing all the elements which compose the menu):
     screen.blit(game_space, (0, 0))
     screen.blit(but_pause, (375, 3))
+    screen.blit(planet_original, (planet_pos[0][0], planet_pos[0][1]))
+    pygame.transform.rotate(planet_original, angle)
     # screen.blit(loading_page, (0, 0))
     # time.sleep(10)
     # Screen Commands:
@@ -241,20 +296,22 @@ def GamePage():
         # Quit Command (Calls 'GameEnd' function): 
         if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
             GameEnd()
+            runner = False
         # Mouse Click Detection (and cosequential actions, depending where/what is clicked):
         if event.type == pygame.MOUSEBUTTONDOWN:
             # Mouse Position(axis x and -y coordinates):
             mouse_pos_x, mouse_pos_y = event.pos
             # Mouse Tracking:
             print(mouse_pos_x, mouse_pos_y)
-            pygame.transform.rotate(cursor_up_center, 60)
             # CLOSE BUTTON Clicked:
-            """
+            
             if (mouse_pos_x in range(but_close_pos[0][0], but_close_pos[1][0])) and (mouse_pos_y in range(but_close_pos[0][1], but_close_pos[1][1])):
                 screen.blit(but_pressed, (but_close_pos[0][0], but_close_pos[0][1]))
                 print("Close Clicked")
                 GameEnd()
-            """
+            
+    #angle += 5
+
 
 
 def GameEnd():
@@ -269,12 +326,16 @@ runner = True
 
 # --------------------------------- EXECUTION ------------------------------------------------ #
 # Main Loop
+"""
 while (runner):
     GamePage()
     # Atualizating Screen:
     pygame.display.update()
-    # Frame Rate (current rate: 60fps):
+    # Frame Rate Update (current rate: 60fps):
     clock.tick(60)
+"""
+
+GamePage2(game_space)
 
 # -------------------------------- FINALIZATION ---------------------------------------------- #
 
