@@ -15,7 +15,7 @@ import time
 # Unused:
 import random
 # import requests
-# import math
+import math
 # import json
 
 # --------------------------------- INICIALIZATION ---------------------------------------------- #
@@ -131,170 +131,199 @@ planet_pos = [[int((display_height - 121)/2), int((display_width - 121)/2)], [in
 
 # Main element on game (User controled):
 def HexCursor():
-    # Loading all pre set configurations:
-    position_list = ["UC", "UR", "DR", "DC", "DL", "UL"]
-    index = 0
-    position = position_list[index]
-    print(position)
-    """
-    if position == "UC":
-        self.cursor = self.cursor_up_center
-    if position == "UR":
-        self.cursor = self.cursor_up_right
-    if position == "UL":
-        self.cursor = self.cursor_up_left
-    if position == "DC":
-        self.cursor = self.cursor_down_center
-    if position == "DR":
-        self.cursor = self.cursor_down_right
-    if position == "DL":
-        self.cursor = self.cursor_down_left
-    self.moves = 0
-    """
-    # Cursor movimentation:
-    """
-    def move(self, moving, index):
-        if self.moving == "Rotate Left":
-            index -= 1
-        if self.moving == "Rotate Right":
-            index += 1
-    """
+	# Loading all pre set configurations:
+	position_list = ["UC", "UR", "DR", "DC", "DL", "UL"]
+	index = 0
+	position = position_list[index]
+	print(position)
+	"""
+	if position == "UC":
+			self.cursor = self.cursor_up_center
+	if position == "UR":
+			self.cursor = self.cursor_up_right
+	if position == "UL":
+			self.cursor = self.cursor_up_left
+	if position == "DC":
+			self.cursor = self.cursor_down_center
+	if position == "DR":
+			self.cursor = self.cursor_down_right
+	if position == "DL":
+			self.cursor = self.cursor_down_left
+	self.moves = 0
+	"""
+	# Cursor movimentation:
+	"""
+	def move(self, moving, index):
+			if self.moving == "Rotate Left":
+					index -= 1
+			if self.moving == "Rotate Right":
+					index += 1
+	"""
 # ------------------------------ OBJECTS CLASSES ---------------------------------------------- #
 
 # Collider Class (Objects which must be reflected):
 class Collider:
-    def __init__(self):
-        pass
+	def __init__(self):
+
+	def rotate_CL(self):
+		pass
+# Barrier Class (Object User controled):
+class Barrier:
+	def __init__(self, sprite):
+		self.speed = speed
+		self.sprite = sprite
+		self.pos_x = pos_x
+		self.pos_y = pos_y
+		self.radius = radius
+		screen.blit(pos_x, pos_y)
+	# Clockwise Rotation function:
+	def rotate_CL(self):
+		pos_x = self.radius*math.sin(pos_x)
+		pos_y = self.radius*math.cos(pos_y)
+	# Anticlockwise Rotation function:
+	def rotate_ACL(self):
+		pos_x = self.radius*math.sin(-pos_x)
+		pos_y = self.radius*math.sin(-pos_y)
 # ------------------------------ PLAYERS CLASSES ---------------------------------------------- #
 
 class PlayerOne:
-    pass
+	pass
 
 
 class PlayerTwo:
-    pass
+	pass
 
 # ------------------------------- MENUS FUNCTIONS ---------------------------------------------- #
-
+# Main loop
 def HomePage():
-    # Loop Controler:
-    runner = True
-    # Main Loop:
-    while (runner):
-        # Loading all pre set configurations:
-        Volume_on = True
-        # Loading Home Page (showing all the elements which compose the menu):
-        screen.blit(home_page_purple, (0, 0))
-        screen.blit(but_close, (but_close_pos[0][0], but_close_pos[0][1]))
-        screen.blit(but_play, (but_play_pos[0][0], but_play_pos[0][1]))
-        screen.blit(but_volon, (but_volon_pos[0][0], but_volon_pos[0][1]))
-        screen.blit(but_profile, (but_profile_pos[0][0], but_profile_pos[0][1]))
-        # screen.blit(but_config, (but_config_pos[0][0], but_config_pos[0][1]))
-        # screen.blit(but_contact, (but_contact_pos[0][0], but_contact_pos[0][1]))
-        # Screen Commands:
-        for event in pygame.event.get():
-            # Quit Command (Calls 'GameEnd' function):
-            if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
-                GameEnd()
-            # Mouse Click Detection (and cosequential actions, depending where/what is clicked):
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                # Mouse Position(axis x and -y coordinates):
-                mouse_pos_x, mouse_pos_y = event.pos
-                # Mouse Tracking:
-                print(mouse_pos_x, mouse_pos_y)
+	# Loop Controler:
+	runner = True
+	# Main Loop:
+	while (runner):
+		# Loading all pre set configurations:
+		Volume_on = True
+		# Loading Home Page (showing all the elements which compose the menu):
+		screen.blit(home_page_purple, (0, 0))
+		screen.blit(but_close, (but_close_pos[0][0], but_close_pos[0][1]))
+		screen.blit(but_play, (but_play_pos[0][0], but_play_pos[0][1]))
+		screen.blit(but_volon, (but_volon_pos[0][0], but_volon_pos[0][1]))
+		screen.blit(but_profile, (but_profile_pos[0][0], but_profile_pos[0][1]))
+		# screen.blit(but_config, (but_config_pos[0][0], but_config_pos[0][1]))
+		# screen.blit(but_contact, (but_contact_pos[0][0], but_contact_pos[0][1]))
+		# Screen Commands:
+		for event in pygame.event.get():
+			# Quit Command (Calls 'GameEnd' function):
+			if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
+				GameEnd()
+			# Mouse Click Detection (and cosequential actions, depending where/what is clicked):
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				# Mouse Position(axis x and -y coordinates):
+				mouse_pos_x, mouse_pos_y = event.pos
+				# Mouse Tracking:
+				print(mouse_pos_x, mouse_pos_y)
 
-                # CLOSE BUTTON Clicked:
-                if (mouse_pos_x in range(but_close_pos[0][0], but_close_pos[1][0])) and (mouse_pos_y in range(but_close_pos[0][1], but_close_pos[1][1])):
-                    screen.blit(but_pressed, (but_close_pos[0][0], but_close_pos[0][1]))
-                    print("Close Clicked")
-                    GameEnd()
+				# CLOSE BUTTON Clicked:
+				if (mouse_pos_x in range(but_close_pos[0][0], but_close_pos[1][0])) and (mouse_pos_y in range(but_close_pos[0][1], but_close_pos[1][1])):
+					screen.blit(but_pressed, (but_close_pos[0][0], but_close_pos[0][1]))
+					print("Close Clicked")
+					GameEnd()
 
-                # PLAY BUTTON Clicked:
-                if (mouse_pos_x in  range(but_play_pos[0][0], but_play_pos[1][0])) and (mouse_pos_y in range(but_play_pos[0][1], but_play_pos[1][1])):
-                    screen.blit(but_pressed_big, (but_play_pos[0][0], but_play_pos[0][1]))
-                    print('Play Clicked')
-                    GamePage()
+				# PLAY BUTTON Clicked:
+				if (mouse_pos_x in  range(but_play_pos[0][0], but_play_pos[1][0])) and (mouse_pos_y in range(but_play_pos[0][1], but_play_pos[1][1])):
+					screen.blit(but_pressed_big, (but_play_pos[0][0], but_play_pos[0][1]))
+					print('Play Clicked')
+					GamePage()
 
-                # VOLUME ON BUTTON Clicked:
-                if (mouse_pos_x in range(but_volon_pos[0][0], but_volon_pos[1][0])) and (mouse_pos_y in range(but_volon_pos[0][1], but_volon_pos[1][1])):
-                    screen.blit(but_pressed, (but_volon_pos[0][0], but_volon_pos[0][1]))
-                    screen.blit(but_voloff, (but_voloff_pos[0][0], but_voloff_pos[0][1]))
-                    print("VolOn Clicked")
+				# VOLUME ON BUTTON Clicked:
+				if (mouse_pos_x in range(but_volon_pos[0][0], but_volon_pos[1][0])) and (mouse_pos_y in range(but_volon_pos[0][1], but_volon_pos[1][1])):
+					screen.blit(but_pressed, (but_volon_pos[0][0], but_volon_pos[0][1]))
+					screen.blit(but_voloff, (but_voloff_pos[0][0], but_voloff_pos[0][1]))
+					print("VolOn Clicked")
 
-                # VOLUME OFF BUTTON Clicked:
-                if (mouse_pos_x in range(but_voloff_pos[0][0], but_voloff_pos[1][0])) and (mouse_pos_y in range(but_voloff_pos[0][1], but_voloff_pos[1][1])):
-                    screen.blit(but_pressed, (but_voloff_pos[0][0], but_voloff_pos[0][1]))
-                    screen.blit(but_volon, (but_voloff_pos[0][0], but_voloff_pos[0][1]))
-                    print("VolOff Clicked")
-              
-                # PROFILE BUTTON Clicked:
-                if (mouse_pos_x in range(but_profile_pos[0][0], but_profile_pos[1][0])) and (mouse_pos_y in range(but_profile_pos[0][1], but_profile_pos[1][1])):
-                    screen.blit(but_pressed, (but_profile_pos[0][0], but_profile_pos[0][1]))
-                    print("Profile Clicked")
-                    
-        # Atualizating Screen:
-        pygame.display.update()
-        # Frame Rate Update (current rate: 60fps):
-        clock.tick(60)
-                 
-def LeftPage():
-    pass
+				# VOLUME OFF BUTTON Clicked:
+				if (mouse_pos_x in range(but_voloff_pos[0][0], but_voloff_pos[1][0])) and (mouse_pos_y in range(but_voloff_pos[0][1], but_voloff_pos[1][1])):
+					screen.blit(but_pressed, (but_voloff_pos[0][0], but_voloff_pos[0][1]))
+					screen.blit(but_volon, (but_voloff_pos[0][0], but_voloff_pos[0][1]))
+					print("VolOff Clicked")
+		
+				# PROFILE BUTTON Clicked:
+				if (mouse_pos_x in range(but_profile_pos[0][0], but_profile_pos[1][0])) and (mouse_pos_y in range(but_profile_pos[0][1], but_profile_pos[1][1])):
+					screen.blit(but_pressed, (but_profile_pos[0][0], but_profile_pos[0][1]))
+					print("Profile Clicked")
+
+		# Atualizating Screen:
+		pygame.display.update()
+		# Frame Rate Update (current rate: 60fps):
+		clock.tick(60)
+							 
+def PausePage():
+	# Loop Controler:
+	pause_runner = True
+	# Pause Loop:
+	while pause_runner:
+		pass
+	pass
 
 
 def RightPage():
-    pass
+	pass
 
 
 def LoadingPage():
-    pass  
+	pass  
 
 
 def GamePage():
-    # Loop Controler:
-    game_runner = True
-    # Game Loop
-    while game_runner:
-        angle = 15
-        # Loading Home Page (showing all the elements which compose the menu):
-        screen.blit(game_space, (0, 0))
-        screen.blit(but_pause, (375, 3))
-        screen.blit(planet_original, (planet_pos[0][0], planet_pos[0][1]))
-        pygame.transform.rotate(planet_original, angle)
-        # screen.blit(loading_page, (0, 0))
-        # time.sleep(10)
-        # Screen Commands:
-        for event in pygame.event.get():
-            # Quit Command (Calls 'GameEnd' function): 
-            if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
-                GameEnd()
-                runner = False
-            # Mouse Click Detection (and cosequential actions, depending where/what is clicked):
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                # Mouse Position(axis x and -y coordinates):
-                mouse_pos_x, mouse_pos_y = event.pos
-                # Mouse Tracking:
-                print(mouse_pos_x, mouse_pos_y)
-                # CLOSE BUTTON Clicked:
-                
-                if (mouse_pos_x in range(but_close_pos[0][0], but_close_pos[1][0])) and (mouse_pos_y in range(but_close_pos[0][1], but_close_pos[1][1])):
-                    screen.blit(but_pressed, (but_close_pos[0][0], but_close_pos[0][1]))
-                    print("Close Clicked")
-                    GameEnd()
-
-        #angle += 5
-
-        # Atualizating Screen:
-        pygame.display.update()
-        # Frame Rate Update (current rate: 60fps):
-        clock.tick(60)
+	# Loop Controler:
+	game_runner = True
+	# Game Loop
+	while game_runner:
+		angle = 15
+		# Loading Home Page (showing all the elements which compose the menu):
+		screen.blit(game_space, (0, 0))
+		screen.blit(but_pause, (375, 3))
+		screen.blit(planet_original, (planet_pos[0][0], planet_pos[0][1]))
+		pygame.transform.rotate(planet_original, angle)
+		# screen.blit(loading_page, (0, 0))
+		# time.sleep(10)
+		# Screen Commands:
+		for event in pygame.event.get():
+			# Quit Command (Calls 'GameEnd' function): 
+			if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
+				game_runner = False
+			# Pause Command (Calls 'PauseMode' function): 
+			if event.type == pygame.K_SPACE:
+				# PauseMode()
+				pass
+			# CLOCKWISE BARRIER Command (Make Barrier rotate to the right):
+			if event.type == pygame.K_a:
+				pass
+			# Clockwise Barrier Command (Make Barrier rotate to the left):
+			if event.type == pygame.K_d:
+				pass
+			# Mouse Click Detection (and cosequential actions, depending where/what is clicked):
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				# Mouse Position(axis x and -y coordinates):
+				mouse_pos_x, mouse_pos_y = event.pos
+				# Mouse Tracking:
+				print(mouse_pos_x, mouse_pos_y)
+				# PAUSE BUTTON Clicked:
+				if (mouse_pos_x in range(but_close_pos[0][0], but_close_pos[1][0])) and (mouse_pos_y in range(but_close_pos[0][1], but_close_pos[1][1])):
+					screen.blit(but_pressed, (but_close_pos[0][0], but_close_pos[0][1]))
+					print("Close Clicked")
+					GameEnd()
+		# Atualizating Screen:
+		pygame.display.update()
+		# Frame Rate Update (current rate: 60fps):
+		clock.tick(60)
 
 
 
 def GameEnd():
-    # Ends PyGame
-    pygame.quit()
-    # Ends Console
-    quit()
+	# Ends PyGame
+	pygame.quit()
+	# Ends Console
+	quit()
 
 # -------------------------------- GENERATION ------------------------------------------------ #
 
@@ -314,28 +343,29 @@ quit()
 
 """
 X Home Page
-  ----Navbar
+----Navbar
 X ----Mute/Sound
 X ----Profile Button
 X ----Close Button
-  ----Contact Button
-  --------
-  --------
-  --------
-  ----Configuration Button
-  --------Username
-  --------Sinc Status
+----Contact Button
+--------
+--------
+--------
+----PauseMenu
+----Configuration Button
+--------Username
+--------Sinc Status
 X ----Play Button
-  Modes
-  ----Original
-  ----Flawless Mode
-  Store Page
-  ----Cursors
-  ----Backgrounds
-  ----Power Ups
-  Profile Page
-  ----XP conter
-  ----High Scores
-  --------List High Scores
-  --------Graphic High Scores
+Modes
+----Original
+----Flawless Mode
+Store Page
+----Cursors
+----Backgrounds
+----Power Ups
+Profile Page
+----XP conter
+----High Scores
+--------List High Scores
+--------Graphic High Scores
 """

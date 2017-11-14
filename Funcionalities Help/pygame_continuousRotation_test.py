@@ -1,15 +1,20 @@
-class Plane:
+import pygame
+pygame.init()
+
+screen = pygame.display.set_mode((600, 600))
+
+class Planet(pygame.sprite.Sprite):
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
         # Image we want to tranform
-        self.imageMaster = pygame.image.load('.\Images\Background\Game Screen\space_background.png')
+        self.imageMaster = pygame.image.load('planet_originalaa.png')
         self.imageMaster = self.imageMaster.convert()
         # setting the Sprot image attribute to our transformation image
         self.image = self.imageMaster
         # get the rect of the image
         self.rect = self.image.get_rect()
         # pu it in the center of the screen no matter what resolution is
-        self.rect.center = ((screen.get_width()/2), screen.get_height()/2)
+        self.rect.center = ((screen.get_width()/2), (screen.get_height()/2))
         # sprites direction based on mathematical rotation of degrees
         self.dir = 0
 
@@ -31,25 +36,31 @@ class Plane:
             self.dir = 15
 
     def turn_right(self):
-        self += 15
+        self -= 15
         if self.dir > 360:
             self.dir = 15
 
 
-def GamePage2(screen):
+def main(screen):
     pygame.display.set_caption("Planet Rotation")
-    background = game_space.convert()
+    background = pygame.Surface(screen.get_size())
+    background = background.convert()
+    background.fill((0, 75, 200))
     screen.blit(background, (0, 0))
     planet = Planet(screen)
     allSprites = pygame.sprite.OrderedUpdates(planet)
+    # ticker is used to delay our animation
     ticker = 0
+    clock = pygame.time.Clock()
     keep_playing = True
 
     while keep_playing:
         clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                GameEnd()
+                keep_playing = False
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                keep_playing = False
         # Continuous Input (command repited )
         keys = pygame.key.get_pressed()
         if ticker >= 3:
@@ -57,7 +68,7 @@ def GamePage2(screen):
                 planet.turn_right()
             if keys[pygame.K_a]:
                 planet.turn_left()
-        # cup blitting
+        # CUD blitting
         allSprites.clear(screen, background)
         allSprites.update()
         allSprites.draw(screen)
@@ -67,3 +78,6 @@ def GamePage2(screen):
             ticker = 0
         else:
             ticker += 1
+
+main(screen)
+pygame.quit()
