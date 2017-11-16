@@ -7,7 +7,7 @@ class Planet(pygame.sprite.Sprite):
     def __init__(self, screen):
         pygame.sprite.Sprite.__init__(self)
         # Image we want to tranform
-        self.imageMaster = pygame.image.load('planet_originalaa.png')
+        self.imageMaster = pygame.image.load('planet_original.png')
         self.imageMaster = self.imageMaster.convert()
         # setting the Sprot image attribute to our transformation image
         self.image = self.imageMaster
@@ -31,12 +31,12 @@ class Planet(pygame.sprite.Sprite):
         self.rect.center = old_center
 
     def turn_left(self):
-        self += 15
+        self.dir += 15
         if self.dir > 360:
             self.dir = 15
 
     def turn_right(self):
-        self -= 15
+        self.dir -= 15
         if self.dir > 360:
             self.dir = 15
 
@@ -45,8 +45,8 @@ def main(screen):
     pygame.display.set_caption("Planet Rotation")
     background = pygame.Surface(screen.get_size())
     background = background.convert()
-    background.fill((0, 75, 200))
-    screen.blit(background, (0, 0))
+    #background.fill((0, 75, 200))
+    #screen.blit(background, (0, 0))
     planet = Planet(screen)
     allSprites = pygame.sprite.OrderedUpdates(planet)
     # ticker is used to delay our animation

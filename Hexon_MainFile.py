@@ -57,14 +57,14 @@ home_page_purple = pygame.image.load(r'.\Images\Background\home_purple_small.png
 # left_page_orange = pygame.image.load(r'.\Images\Background\home_orange.png')
 # left_page_gray = pygame.image.load(r'.\Images\Background\home_gray.png')
 
-# Right Page Background:
-# right_page_original = pygame.image.load(r'.\Images\Background\right_page_original_small.png')
-# right_page_purple = pygame.image.load(r'.\Images\Background\home_purple_small.png')
-# right_page_green = pygame.image.load(r'.\Images\Background\home_green.png')
-# right_page_blue = pygame.image.load(r'.\Images\Background\home_blue.png')
-# right_page_pink = pygame.image.load(r'.\Images\Background\home_pink.png')
-# right_page_orange = pygame.image.load(r'.\Images\Background\home_orange.png')
-# right_page_gray = pygame.image.load(r'.\Images\Background\home_gray.png')
+# Pause Page Background:
+pause_page_original = pygame.image.load(r'.\Images\Background\pause_original_small.png')
+# pause_page_purple = pygame.image.load(r'.\Images\Background\home_purple_small.png')
+# pause_page_green = pygame.image.load(r'.\Images\Background\home_green.png')
+# pause_page_blue = pygame.image.load(r'.\Images\Background\home_blue.png')
+# pause_page_pink = pygame.image.load(r'.\Images\Background\home_pink.png')
+# pause_page_orange = pygame.image.load(r'.\Images\Background\home_orange.png')
+# pause_page_gray = pygame.image.load(r'.\Images\Background\home_gray.png')
 
 # Game Page Background:
 game_space = pygame.image.load(r'.\Images\Background\Game Screen\space_background.png')
@@ -118,7 +118,9 @@ but_close_pos = [[169, 146], [169 + 109, 146 + 120]]
 but_volon_pos = [[338, 243], [338 + 106, 243 + 122]]
 but_voloff_pos = [[338, 243], [338 + 106, 243 + 122]]
 but_profile_pos = [[2, 243], [2 + 109, 243 + 120]]
-but_pause_pos = [[2, 243], [2 + 109, 243 + 120]]
+but_pause_pos = [[375, 3], [375 + 73, 3 + 81]]
+but_yes_pos = [[], []]
+but_no_pos = [[], []]
 """
 but_config_pos = [[2, 243], [2 + 109, 243 + 120]]
 but_contact_pos = [[2, 243], [2 + 109, 243 + 120]]
@@ -164,9 +166,10 @@ def HexCursor():
 # Collider Class (Objects which must be reflected):
 class Collider:
 	def __init__(self):
+		self.speed
 
-	def rotate_CL(self):
-		pass
+
+
 # Barrier Class (Object User controled):
 class Barrier:
 	def __init__(self, sprite):
@@ -197,9 +200,9 @@ class PlayerTwo:
 # Main loop
 def HomePage():
 	# Loop Controler:
-	runner = True
+	home_runner = True
 	# Main Loop:
-	while (runner):
+	while home_runner:
 		# Loading all pre set configurations:
 		Volume_on = True
 		# Loading Home Page (showing all the elements which compose the menu):
@@ -217,7 +220,7 @@ def HomePage():
 				GameEnd()
 			# Mouse Click Detection (and cosequential actions, depending where/what is clicked):
 			if event.type == pygame.MOUSEBUTTONDOWN:
-				# Mouse Position(axis x and -y coordinates):
+				# Mouse Position (axis x and -y coordinates):
 				mouse_pos_x, mouse_pos_y = event.pos
 				# Mouse Tracking:
 				print(mouse_pos_x, mouse_pos_y)
@@ -261,9 +264,29 @@ def PausePage():
 	pause_runner = True
 	# Pause Loop:
 	while pause_runner:
-		pass
-	pass
+		# Loading Home Page (showing all the elements which compose the menu):
+		screen.blit(game_space, (0, 0))
+		screen.blit(pause_page_original, (0, 0))
+		for event in pygame.event.get():
+			# Quit Command (Calls 'GameEnd' function): 
+			if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
+				pause_runner = False
 
+
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				# Mouse Position (axis x and -y coordinates):
+				mouse_pos_x, mouse_pos_y = event.pos
+				# Mouse Tracking:
+				print(mouse_pos_x, mouse_pos_y)
+
+				# YES BUTTON Clicked:
+				#if (mouse_pos_x in range(but_pause_pos[0][0], but_pause_pos[1][0])) and (mouse_pos_y in range(but_pause_pos[0][1], but_pause_pos[1][1])):
+				#	print("Pause Clicked")
+
+		# Atualizating Screen:
+		pygame.display.update()
+		# Frame Rate Update (current rate: 60fps):
+		clock.tick(60)
 
 def RightPage():
 	pass
@@ -281,9 +304,8 @@ def GamePage():
 		angle = 15
 		# Loading Home Page (showing all the elements which compose the menu):
 		screen.blit(game_space, (0, 0))
-		screen.blit(but_pause, (375, 3))
+		screen.blit(but_pause, (but_pause_pos[0][0], but_pause_pos[0][1])) 
 		screen.blit(planet_original, (planet_pos[0][0], planet_pos[0][1]))
-		pygame.transform.rotate(planet_original, angle)
 		# screen.blit(loading_page, (0, 0))
 		# time.sleep(10)
 		# Screen Commands:
@@ -293,8 +315,8 @@ def GamePage():
 				game_runner = False
 			# Pause Command (Calls 'PauseMode' function): 
 			if event.type == pygame.K_SPACE:
-				# PauseMode()
-				pass
+				PauseMode()
+				
 			# CLOCKWISE BARRIER Command (Make Barrier rotate to the right):
 			if event.type == pygame.K_a:
 				pass
@@ -307,11 +329,12 @@ def GamePage():
 				mouse_pos_x, mouse_pos_y = event.pos
 				# Mouse Tracking:
 				print(mouse_pos_x, mouse_pos_y)
+
 				# PAUSE BUTTON Clicked:
-				if (mouse_pos_x in range(but_close_pos[0][0], but_close_pos[1][0])) and (mouse_pos_y in range(but_close_pos[0][1], but_close_pos[1][1])):
-					screen.blit(but_pressed, (but_close_pos[0][0], but_close_pos[0][1]))
-					print("Close Clicked")
-					GameEnd()
+				if (mouse_pos_x in range(but_pause_pos[0][0], but_pause_pos[1][0])) and (mouse_pos_y in range(but_pause_pos[0][1], but_pause_pos[1][1])):
+					screen.blit(but_pressed, (but_pause_pos[0][0], but_pause_pos[0][1]))
+					print("Pause Clicked")
+					PausePage()
 		# Atualizating Screen:
 		pygame.display.update()
 		# Frame Rate Update (current rate: 60fps):
