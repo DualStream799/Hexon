@@ -96,7 +96,9 @@ but_profile = pygame.image.load(r'.\Images\Buttons\Small\hex_but_profile_small.p
 # but_config = pygame.image.load(r'.\Images\Buttons\hex_but_config.png')
 # but_locked = pygame.image.load(r'.\Images\Buttons\hex_but_locked.png')
 but_pause = pygame.image.load(r'.\Images\Buttons\Small\hex_but_pause_small.png')
-
+but_pause_yes = pygame.image.load(r'.\Images\Buttons\Small\hex_but_pause_yes.png')
+but_pause_no = pygame.image.load(r'.\Images\Buttons\Small\hex_but_pause_no.png')
+but_star = pygame.image.load(r'.\Images\Buttons\Small\hex_but_star.png')
 # Cursor:
 cursor_up_center = pygame.image.load(r'.\Images\Cursor\cursor_original.png')
 cursor_up_right = pygame.transform.rotate(cursor_up_center, 60)
@@ -119,8 +121,9 @@ but_volon_pos = [[338, 243], [338 + 106, 243 + 122]]
 but_voloff_pos = [[338, 243], [338 + 106, 243 + 122]]
 but_profile_pos = [[2, 243], [2 + 109, 243 + 120]]
 but_pause_pos = [[375, 3], [375 + 73, 3 + 81]]
-but_yes_pos = [[], []]
-but_no_pos = [[], []]
+but_pause_yes_pos = [[55, 347], [55 + 81, 347 + 92]]
+but_pause_no_pos = [[333, 347], [333 + 81, 347 + 93]]
+but_star_pos = [[337, 438], [337 + 110, 438 + 121]]
 """
 but_config_pos = [[2, 243], [2 + 109, 243 + 120]]
 but_contact_pos = [[2, 243], [2 + 109, 243 + 120]]
@@ -173,7 +176,8 @@ class Collider:
 # Barrier Class (Object User controled):
 class Barrier:
 	def __init__(self, sprite):
-		self.speed = speed
+		self.speed_x = speed_x
+		self.speed_y = speed_y
 		self.sprite = sprite
 		self.pos_x = pos_x
 		self.pos_y = pos_y
@@ -187,6 +191,7 @@ class Barrier:
 	def rotate_ACL(self):
 		pos_x = self.radius*math.sin(-pos_x)
 		pos_y = self.radius*math.sin(-pos_y)
+
 # ------------------------------ PLAYERS CLASSES ---------------------------------------------- #
 
 class PlayerOne:
@@ -211,6 +216,8 @@ def HomePage():
 		screen.blit(but_play, (but_play_pos[0][0], but_play_pos[0][1]))
 		screen.blit(but_volon, (but_volon_pos[0][0], but_volon_pos[0][1]))
 		screen.blit(but_profile, (but_profile_pos[0][0], but_profile_pos[0][1]))
+		screen.blit(but_star, (but_star_pos[0][0], but_star_pos[0][1]))
+
 		# screen.blit(but_config, (but_config_pos[0][0], but_config_pos[0][1]))
 		# screen.blit(but_contact, (but_contact_pos[0][0], but_contact_pos[0][1]))
 		# Screen Commands:
@@ -267,6 +274,9 @@ def PausePage():
 		# Loading Home Page (showing all the elements which compose the menu):
 		screen.blit(game_space, (0, 0))
 		screen.blit(pause_page_original, (0, 0))
+		screen.blit(but_pause_yes, (but_pause_yes_pos[0][0], but_pause_yes_pos[0][1]))
+		screen.blit(but_pause_no, (but_pause_no_pos[0][0], but_pause_no_pos[0][1]))
+		# Screen commands:
 		for event in pygame.event.get():
 			# Quit Command (Calls 'GameEnd' function): 
 			if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
@@ -280,9 +290,15 @@ def PausePage():
 				print(mouse_pos_x, mouse_pos_y)
 
 				# YES BUTTON Clicked:
-				#if (mouse_pos_x in range(but_pause_pos[0][0], but_pause_pos[1][0])) and (mouse_pos_y in range(but_pause_pos[0][1], but_pause_pos[1][1])):
-				#	print("Pause Clicked")
+				if (mouse_pos_x in range(but_pause_yes_pos[0][0], but_pause_yes_pos[1][0])) and (mouse_pos_y in range(but_pause_yes_pos[0][1], but_pause_yes_pos[1][1])):
+					print("Pause Yes Clicked")
+					pause_runner = False
 
+				# NO BUTTON Clicked:
+				if (mouse_pos_x in range(but_pause_no_pos[0][0], but_pause_no_pos[1][0])) and (mouse_pos_y in range(but_pause_no_pos[0][1], but_pause_no_pos[1][1])):
+					print("Pause No Clicked")
+					pause_runner = False
+					game_runner = False
 		# Atualizating Screen:
 		pygame.display.update()
 		# Frame Rate Update (current rate: 60fps):
@@ -302,6 +318,7 @@ def GamePage():
 	# Game Loop
 	while game_runner:
 		angle = 15
+		image_alpha = 0
 		# Loading Home Page (showing all the elements which compose the menu):
 		screen.blit(game_space, (0, 0))
 		screen.blit(but_pause, (but_pause_pos[0][0], but_pause_pos[0][1])) 
@@ -315,7 +332,7 @@ def GamePage():
 				game_runner = False
 			# Pause Command (Calls 'PauseMode' function): 
 			if event.type == pygame.K_SPACE:
-				PauseMode()
+				PausePage()
 				
 			# CLOCKWISE BARRIER Command (Make Barrier rotate to the right):
 			if event.type == pygame.K_a:
@@ -367,9 +384,7 @@ quit()
 """
 X Home Page
 ----Navbar
-X ----Mute/Sound
-X ----Profile Button
-X ----Close Button
+
 ----Contact Button
 --------
 --------
@@ -378,7 +393,6 @@ X ----Close Button
 ----Configuration Button
 --------Username
 --------Sinc Status
-X ----Play Button
 Modes
 ----Original
 ----Flawless Mode

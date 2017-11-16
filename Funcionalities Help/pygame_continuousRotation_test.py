@@ -43,8 +43,9 @@ class Planet(pygame.sprite.Sprite):
 
 def main(screen):
     pygame.display.set_caption("Planet Rotation")
-    background = pygame.Surface(screen.get_size())
-    background = background.convert()
+    background = pygame.image.load("home_purple_small.png")
+    #background = pygame.Surface(screen.get_size())
+    #background = background.convert()
     #background.fill((0, 75, 200))
     #screen.blit(background, (0, 0))
     planet = Planet(screen)
