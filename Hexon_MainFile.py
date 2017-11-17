@@ -10,6 +10,7 @@ Current Version: 1.0.0
 # ------------------------------------ LIBRARIES ------------------------------------------------ #
 
 # Used:
+import numpy as np
 import pygame
 import time
 # Unused:
@@ -114,6 +115,9 @@ cursor_down_left = pygame.transform.rotate(cursor_up_center, -120)
 # Planets:
 planet_original = pygame.image.load(r'.\Images\Objects\Planets\planet_original.png')
 
+# Spacecrafts:
+ship_F5S4 = pygame.image.load(r'.\Images\Objects\Spacecraft_F5S4.png')
+
 # ----------------------------------- POSITIONS ------------------------------------------------ #
 
 # Buttons:
@@ -135,19 +139,19 @@ but_contact_pos = [[2, 243], [2 + 109, 243 + 120]]
 planet_pos = [[int((display_height - 121)/2), int((display_width - 121)/2)], [int((display_height + 121)/2), int((display_width + 121)/2)]]
 
 
-cursor_x_pos = [115, 109, 93, 67, 34, -2, -38, -70, -94, -108, -110, -100, -79, -49, -15, 21, 56, 85, 105, 114, 
+cursor_x_pos = np.array([115, 109, 93, 67, 34, -2, -38, -70, -94, -108, -110, -100, -79, -49, -15, 21, 56, 85, 105, 114, 
 				112, 99, 76, 45, 10, -26, -60, -87, -105, -111, -105, -87, -60, -26, 10, 45, 76, 99, 112, 114, 105, 
-				85, 56, 22, -14, -49, -79, -100, -110, -108, -94, -70, -39, -3, 34, 66, 92, 109]
+				85, 56, 22, -14, -49, -79, -100, -110, -108, -94, -70, -39, -3, 34, 66, 92, 109]) + int(display_height - 25)/2
 
-cursor_y_pos = [0, 35, 67, 92, 108, 113, 105, 87, 59, 25, -12, -48, -79, -101, -112, -111, -99, -77, -46, -12, 
+cursor_y_pos = np.array([0, 35, 67, 92, 108, 113, 105, 87, 59, 25, -12, -48, -79, -101, -112, -111, -99, -77, -46, -12, 
 				24, 57, 85, 104, 113, 109, 95, 69, 37, 0, -36, -69, -94, -109, -113, -104, -85, -57, -24, 12, 46, 
-				76, 99, 111, 112, 101, 79, 48, 13, -24, -59, -87, -105, -113, -108, -93, -68, -36]
+				76, 99, 111, 112, 101, 79, 48, 13, -24, -59, -87, -105, -113, -108, -93, -68, -36]) + int(display_width - 42)/2
 
-# -------------------------------- ROTATION SPEED ------------------------------------------------ #
+# --------------------------------- ROTATION SPEED --------------------------------------------- #
 
 planet_speed = 1
 
-# ------------------------------- OBJECTS CLASSES --------------------------------------------- #
+# -------------------------------- OBJECTS CLASSES --------------------------------------------- #
 
 # Main element on game (User controled):
 def HexCursor():
@@ -244,7 +248,6 @@ def HomePage():
 		screen.blit(but_profile, (but_profile_pos[0][0], but_profile_pos[0][1]))
 		screen.blit(but_star, (but_star_pos[0][0], but_star_pos[0][1]))
 		screen.blit(but_play, (but_play_pos[0][0], but_play_pos[0][1]))
-
 		# screen.blit(but_config, (but_config_pos[0][0], but_config_pos[0][1]))
 		# screen.blit(but_contact, (but_contact_pos[0][0], but_contact_pos[0][1]))
 		# Screen Commands:
@@ -346,6 +349,9 @@ def GamePage():
 	# Loop Controler:
 	game_runner = True
 	planet_angle = 0
+	index_barrier_pos = 0
+	# ticker is used to delay our animation
+	ticker = 0
 	# Game Loop
 	while game_runner:
 		# Loading Home Page (showing all the elements which compose the menu):
@@ -354,30 +360,45 @@ def GamePage():
 		screen.blit(but_pause, (but_pause_pos[0][0], but_pause_pos[0][1])) 
 		screen.blit(planet_original, (planet_pos[0][0], planet_pos[0][1]))
 		screen.blit(rotating_planet, (planet_pos[0][0], planet_pos[0][1]))
+		screen.blit(ship_F5S4, (cursor_x_pos[index_barrier_pos], cursor_y_pos[index_barrier_pos]))
+		#aindex_barrier_pos += 0.1
 		# screen.blit(loading_page, (0, 0))
 		# time.sleep(10)
 		# Screen Commands:
 		for event in pygame.event.get():
 			# Quit Command (Calls 'GameEnd' function): 
-			if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
-				game_runner = False
-			# Pause Command (Calls 'PauseMode' function): 
-			if event.type == pygame.K_SPACE:
-				PausePage()
-				
-			# CLOCKWISE BARRIER Command (Make Barrier rotate to the right):
-			if event.type == pygame.K_a:
-				pass
-			# Clockwise Barrier Command (Make Barrier rotate to the left):
-			if event.type == pygame.K_d:
-				pass
+			if event.type == pygame.QUIT:
+				GameEnd()
+#			keys = pygame.key.get_pressed()
+#			if ticker >= 3:
+#				if keys[pygame.K_d]:
+#					index_barrier_pos -= 1
+#					print(index_barrier_pos)
+#				if keys[pygame.K_a]:
+#					index_barrier_pos += 1
+#					print(index_barrier_pos)
+			# Keyboard Click Detection (and cosequential actions, depending where/what is clicked):
+			if event.type == pygame.KEYDOWN:	
+				# Exit Command (Ends 'GamePage' function and return to 'MenuPage'):
+				if event.key == pygame.K_ESCAPE:
+					game_runner = False
+				# Pause Command (Calls 'PauseMode' function): 
+				if event.key == pygame.K_SPACE:
+					PausePage()	
+				# CLOCKWISE Barrier Command (Make Barrier rotate to the right):
+				if event.key == pygame.K_a:
+					index_barrier_pos -= 1
+					print(index_barrier_pos)
+				# ANTICLOCKWISE Barrier Command (Make Barrier rotate to the left):
+				if event.key == pygame.K_d:
+					index_barrier_pos += 1
+					print(index_barrier_pos)
 			# Mouse Click Detection (and cosequential actions, depending where/what is clicked):
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				# Mouse Position(axis x and -y coordinates):
 				mouse_pos_x, mouse_pos_y = event.pos
 				# Mouse Tracking:
 				print(mouse_pos_x, mouse_pos_y)
-
 				# PAUSE BUTTON Clicked:
 				if (mouse_pos_x in range(but_pause_pos[0][0], but_pause_pos[1][0])) and (mouse_pos_y in range(but_pause_pos[0][1], but_pause_pos[1][1])):
 					screen.blit(but_pressed, (but_pause_pos[0][0], but_pause_pos[0][1]))
@@ -387,11 +408,16 @@ def GamePage():
 		pygame.display.update()
 		# Frame Rate Update (current rate: 60fps):
 		clock.tick(60)
+		# Planet Continuous Rotation (reset angle counter):
 		if planet_angle >= 360:
 			planet_angle = 0
 		else:
 			planet_angle += 0.5
-
+		# Barrier Continuous Rotation (reset index position counter):
+		if index_barrier_pos < 0:
+			index_barrier_pos = len(cursor_x_pos) - 1
+		if index_barrier_pos > len(cursor_x_pos) - 1:
+			index_barrier_pos = 0
 
 def GameEnd():
 	# Ends PyGame
@@ -399,26 +425,15 @@ def GameEnd():
 	# Ends Console
 	quit()
 
-# -------------------------------- GENERATION ------------------------------------------------ #
-
-
 # --------------------------------- EXECUTION ------------------------------------------------ #
 
 HomePage()
-
-# -------------------------------- FINALIZATION ---------------------------------------------- #
-
-# Ends PyGame
-pygame.quit()
-# Ends Console
-quit()
 
 # ----------------------------------- IDEAS ------------------------------------------------- #
 
 """
 X Home Page
 ----Navbar
-
 ----Contact Button
 --------
 --------
