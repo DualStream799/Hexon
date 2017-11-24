@@ -283,14 +283,18 @@ def image_rotation_centered(image, angle):
     return rot_image
 
 
-# ------------------------------- MENUS FUNCTIONS ---------------------------------------------- #
+# ------------------------------------- LOGIN PAGE ---------------------------------------------- #
 
 
-# Login Page
+# Main loop
 def LoginPage():
 	# Loading Home Page (showing all the elements which compose the menu):
 	#screen.blit(home_page_purple, (0, 0))
 	pass
+
+
+# -------------------------------------- HOME PAGE ---------------------------------------------- #
+
 
 # Main loop
 def HomePage():
@@ -358,9 +362,13 @@ def HomePage():
 		clock.tick(60)
 
 
+# ------------------------------------- PAUSE PAGE ---------------------------------------------- #
+
+
 def PausePage():
 	# Loop Controler:
 	pause_runner = True
+	exit_trigger = True
 	# Pause Loop:
 	while pause_runner:
 		# Loading Home Page (showing all the elements which compose the menu):
@@ -389,7 +397,9 @@ def PausePage():
 				if (mouse_pos_x in range(but_pause_no_pos[0][0], but_pause_no_pos[1][0])) and (mouse_pos_y in range(but_pause_no_pos[0][1], but_pause_no_pos[1][1])):
 					print("Pause No Clicked")
 					pause_runner = False
-					return False
+#					exit_trigger = False
+#	if exit_trigger == False:
+#		return False
 		# Atualizating Screen:
 		pygame.display.update()
 		# Frame Rate Update (current rate: 60fps):
@@ -402,6 +412,9 @@ def ProfilePage():
 
 def LoadingPage():
 	pass  
+
+
+# -------------------------------------- GAME PAGE ---------------------------------------------- #
 
 
 def GamePage():
@@ -462,13 +475,13 @@ def GamePage():
 		pygame.display.update()
 		# Frame Rate Update (current rate: 60fps):
 		clock.tick(60)
-		# Planet Continuous Rotation (reset angle counter):
+		# Planet Continuous Rotation (reset planet angle counter):
 		if planet_angle >= 360:
 			planet_angle = 0
 		else:
 			planet_angle += 0.5
 
-		# Planet Continuous Rotation (reset angle counter):
+		# Planet Continuous Rotation (reset barrier angle counter):
 		if barrier_angle >= 360:
 			barrier_angle = 0
 		else:
