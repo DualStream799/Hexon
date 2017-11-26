@@ -29,12 +29,13 @@ pygame.font.init()
 display_width = 800
 display_height = 450
 screen = pygame.display.set_mode((display_height, display_width))
+
 """
 display_width = 0
 display_height = 0
 screen = pygame.display.set_mode((display_height, display_width), pygame.FULLSCREEN)
 """
-pygame.display.set_caption('Hexon v1.0', 'hex_logo_small.png')
+pygame.display.set_caption('Hexon v1.0', '.\hex_logo_small.png')
 # Loading Dsplay Updater:
 clock = pygame.time.Clock()
 
@@ -115,6 +116,7 @@ but_logoff = pygame.image.load(r'.\Images\Buttons\Small\hex_but_logoff_small.png
 cursor_purple = pygame.image.load(r'.\Images\Cursor\Barrier.png')
 
 # Colliders:
+fast_comet_original = pygame.image.load(r'.\Images\Colliders\fast_comet_original.png')
 
 
 # PowerUps:
@@ -238,7 +240,7 @@ planet_speed = 1
 # Collider Class (Objects which must be reflected):
 class Collider:
 	def __init__(self):
-		pass
+		
 	
 
 
