@@ -308,8 +308,16 @@ def HomePage():
 		# Screen Commands:
 		for event in pygame.event.get():
 			# Quit Command (Calls 'GameEnd' function):
-			if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
+			if event.type == pygame.QUIT:
 				GameEnd()
+			# Keyboard Click Detection (and cosequential actions, depending where/what is clicked):
+			if event.type == pygame.KEYDOWN:	
+				# Exit Command (Calls 'GameEnd' function):
+				if event.key == pygame.K_ESCAPE:
+					GameEnd()
+				# Enter Command (Calls 'GameEnd' function):
+				if event.key == pygame.K_SPACE:
+					GamePage()
 			# Mouse Click Detection (and cosequential actions, depending where/what is clicked):
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				# Mouse Position (axis x and -y coordinates):
@@ -412,12 +420,13 @@ def LoadingPage():
 def GamePage():
 	# Loop Controler:
 	game_runner = True
+	# Movement Delayer (Used to delay animation movement speed avoiding user visual discomfort):
+	ticker = 0
+	# Rotation/Translation Controlers:
 	planet_angle = 0
 	barrier_angle = 0
 	index_barrier_pos = 0
-	index_barrier_runner = True
-	# ticker is used to delay our animation
-	ticker = 0
+	barrier_runner = True
 	# Game Loop
 	while game_runner:
 		rotating_planet = image_rotation_centered(planet_original, planet_angle)
@@ -427,7 +436,7 @@ def GamePage():
 		screen.blit(but_pause, (but_pause_pos[0][0], but_pause_pos[0][1])) 
 		screen.blit(planet_original, (planet_pos[0][0], planet_pos[0][1]))
 		screen.blit(rotating_planet, (planet_pos[0][0], planet_pos[0][1]))
-		screen.blit(cursor_purple, (cursor_x_pos[index_barrier_pos], cursor_y_pos[index_barrier_pos]))
+		screen.blit(rotating_barrier, (cursor_x_pos[index_barrier_pos], cursor_y_pos[index_barrier_pos]))
 		# Screen Commands:
 		for event in pygame.event.get():
 			# Quit Command (Calls 'GameEnd' function): 
@@ -442,12 +451,12 @@ def GamePage():
 				if event.key == pygame.K_SPACE:
 					PausePage()	
 				# CLOCKWISE Barrier Command (Make Barrier rotate to the right):
-				if event.key == pygame.K_a:
-					index_barrier_runner = False
+				if event.key == pygame.K_d:
+					barrier_runner = False
 					print(index_barrier_pos)
 				# ANTICLOCKWISE Barrier Command (Make Barrier rotate to the left):
-				if event.key == pygame.K_d:
-					index_barrier_runner = True
+				if event.key == pygame.K_a:
+					barrier_runner = True
 					print(index_barrier_pos)
 			# Mouse Click Detection (and cosequential actions, depending where/what is clicked):
 			if event.type == pygame.MOUSEBUTTONDOWN:
@@ -472,19 +481,18 @@ def GamePage():
 			planet_angle = 0
 		else:
 			planet_angle += 0.5
-
 		# Planet Continuous Rotation (reset barrier angle counter):
 		if barrier_angle >= 360:
 			barrier_angle = 0
 		else:
-			barrier_angle += 2
+			barrier_angle += 1
 
 
-		if ticker >= 3:
-			if index_barrier_runner == True:
-				index_barrier_pos -= 1
-			elif index_barrier_runner == False:
-				index_barrier_pos += 1	
+		
+		if barrier_runner == True:
+			index_barrier_pos -= 1
+		elif barrier_runner == False:
+			index_barrier_pos += 1	
 		# Barrier Continuous Translation (reset index position counter):
 		if index_barrier_pos < 0:
 			index_barrier_pos = len(cursor_x_pos) - 1
