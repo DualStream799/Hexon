@@ -481,24 +481,20 @@ def GamePage():
 			planet_angle = 0
 		else:
 			planet_angle += 0.5
-		# Planet Continuous Rotation (reset barrier angle counter):
+		# Planet Continuous Translation 'n Rotation (reset barrier angle counter and alternates angle rotation and position list index):
 		if barrier_angle >= 360:
 			barrier_angle = 0
-		else:
+		elif barrier_runner == True:
 			barrier_angle += 1
-
-
-		
-		if barrier_runner == True:
 			index_barrier_pos -= 1
 		elif barrier_runner == False:
+			barrier_angle -= 1
 			index_barrier_pos += 1	
 		# Barrier Continuous Translation (reset index position counter):
 		if index_barrier_pos < 0:
 			index_barrier_pos = len(cursor_x_pos) - 1
 		if index_barrier_pos > len(cursor_x_pos) - 1:
 			index_barrier_pos = 0
-
 		# Rate Command Control (check pressed buttons each 3 loop cycles):
 		if ticker >= 3:
 			ticker = 0
