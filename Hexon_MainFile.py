@@ -7,21 +7,22 @@ Current Version: 1.0.0
 
 """
 
+
 # ------------------------------------ LIBRARIES ------------------------------------------------ #
 
-# Used:
+
 from scipy.integrate import odeint 
 from math import pi
 import numpy as np
 import pygame
-import time
-# Unused:
 import random
-# import requests
+import time
 import math
 # import json
 
+
 # --------------------------------- INICIALIZATION ---------------------------------------------- #
+
 
 # Loading PyGame:
 pygame.init()
@@ -41,7 +42,9 @@ pygame.display.set_caption('Hexon v1.0', '.\hex_logo_small.png')
 # Loading Dsplay Updater:
 clock = pygame.time.Clock()
 
+
 # ------------------------------------ IMAGES ------------------------------------------------- #
+
 
 # Cursor:
 
@@ -397,7 +400,7 @@ def PausePage():
 				if (mouse_pos_x in range(but_pause_no_pos[0][0], but_pause_no_pos[1][0])) and (mouse_pos_y in range(but_pause_no_pos[0][1], but_pause_no_pos[1][1])):
 					print("Pause No Clicked")
 					pause_runner = False
-#					exit_trigger = False
+					return False
 #	if exit_trigger == False:
 #		return False
 		# Atualizating Screen:
@@ -449,7 +452,9 @@ def GamePage():
 					game_runner = False
 				# Pause Command (Calls 'PauseMode' function): 
 				if event.key == pygame.K_SPACE:
-					PausePage()	
+					pause_returned = PausePage()	
+					if pause_returned == False:
+						game_runner = False
 				# CLOCKWISE Barrier Command (Make Barrier rotate to the right):
 				if event.key == pygame.K_d:
 					barrier_runner = False
@@ -500,6 +505,9 @@ def GamePage():
 			ticker = 0
 		else:
 			ticker += 1
+
+
+# -------------------------------------- GAME END ---------------------------------------------- #
 
 
 def GameEnd():
