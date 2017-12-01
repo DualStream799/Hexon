@@ -12,7 +12,10 @@ Current Version: 1.0.0
 
 
 from scipy.integrate import odeint 
+from math import degrees
+from math import atan
 from math import pi
+
 import numpy as np
 import pygame
 import random
@@ -134,55 +137,10 @@ planet_original = pygame.image.load(r'.\Images\Planets\planet_original.png')
 ship_F5S4 = pygame.image.load(r'.\Images\Spacecrafts\Spacecraft_F5S4.png')
 
 
-# --------------------------------- ROTATION SPEED --------------------------------------------- #
-
-planet_speed = 1
-
 # -------------------------------- OBJECTS CLASSES --------------------------------------------- #
 
 
 
-# ------------------------------ OBJECTS CLASSES ---------------------------------------------- #
-
-
-# Collider Class (Objects which must be reflected):
-class Collider:
-	def __init__(self):
-		pass
-	
-
-# Barrier Class (Object User controled):
-class Barrier:
-	def __init__(self, sprite):
-		self.speed_x = speed_x
-		self.speed_y = speed_y
-		self.sprite = sprite
-		self.pos_x = pos_x
-		self.pos_y = pos_y
-		self.radius = radius
-		screen.blit(pos_x, pos_y)
-	# Clockwise Rotation function:
-	def rotate_CL(self):
-		pos_x = self.radius*math.sin(pos_x)
-		pos_y = self.radius*math.cos(pos_y)
-	# Anticlockwise Rotation function:
-	def rotate_ACL(self):
-		pos_x = self.radius*math.sin(-pos_x)
-		pos_y = self.radius*math.sin(-pos_y)
-
-
-# ------------------------------ PLAYERS CLASSES ---------------------------------------------- #
-
-
-# Control commands for Player One:
-class PlayerOne:
-	def __init__(self):
-		pass
-
-# Control commands for Player Two:
-class PlayerTwo:
-	def __init__(self):
-		pass
 
 # ----------------------------- SECONDARY FUNCTIONS -------------------------------------------- #
 
@@ -242,14 +200,88 @@ def orbital_trajectory(radius):
     # Returned data
     return solution_pixels_rounded
 
-
 # Generate a ramdom position for a Collider:
 def collider_spawn():
 	random_x = random.randint(0, display_height)
 	random_y = random.randint(0, display_width)
-	collider_angle = math.arctan(random_x/random_y)
-	
-	return (random_x, random_y), collider_angle
+	collider_angle = degrees(atan(random_x/random_y))
+	print("random:", random_x, random_y)
+	rotated_collider = pygame.transform.rotate(fast_comet_original, collider_angle)
+	screen.blit(rotated_collider, (random_x, random_y))
+
+
+def GameInput():
+		pass
+
+
+# ------------------------------ OBJECTS CLASSES ---------------------------------------------- #
+
+
+# Collider Class (Objects which must be reflected):
+class Collider:
+	"""
+	"""
+	def __init__(self, image, orientation):
+		"""Loading all pre-set configurations for the class methods"""
+		self.orientation = orientation
+
+		if self.orientation == 'h' or self.orientation == 'horizontal':
+			self.pos_x = 100
+#			self.pos_y = random.randint(1, display_width)
+			self.pos_y = 200
+		if self.orientation == 'v' or self.orientation == 'vertical':
+			self.pos_x = random.randint(1, display_height)
+			self.pos_y = 0
+		# Rotation angle (used to rotate the image and make it pointing to the planets center)
+		self.angle = degrees(atan(self.pos_x/self.pos_y))
+		# Image load
+		self.image = image
+		# Image rotation
+		self.rotated_collider = pygame.transform.rotate(self.image, self.angle)
+
+	def display(self):
+		"""Show the rotated image on screen"""
+		screen.blit(self.rotated_collider, (self.pos_x, self.pos_y))
+
+	def update_pos(self):
+		self.pos_x += int(round(0))
+		self.pos_y += int(round(0))
+
+	def collide(self):
+		pass
+
+# Barrier Class (Object User controled):
+class Barrier:
+	def __init__(self, sprite):
+		self.speed_x = speed_x
+		self.speed_y = speed_y
+		self.sprite = sprite
+		self.pos_x = pos_x
+		self.pos_y = pos_y
+		self.radius = radius
+		screen.blit(pos_x, pos_y)
+	# Clockwise Rotation function:
+	def rotate_CL(self):
+		pos_x = self.radius*math.sin(pos_x)
+		pos_y = self.radius*math.cos(pos_y)
+	# Anticlockwise Rotation function:
+	def rotate_ACL(self):
+		pos_x = self.radius*math.sin(-pos_x)
+		pos_y = self.radius*math.sin(-pos_y)
+
+
+# ------------------------------ PLAYERS CLASSES ---------------------------------------------- #
+
+
+# Control commands for Player One:
+class PlayerOne:
+	def __init__(self):
+		pass
+
+# Control commands for Player Two:
+class PlayerTwo:
+	def __init__(self):
+		pass
 
 
 # ----------------------------------- POSITIONS ------------------------------------------------ #
@@ -284,8 +316,138 @@ cursor_y_pos = orbital_trajectory(117)[:, 1] + int((display_width - 121)/2)
 # Main loop
 def LoginPage():
 	# Loading Home Page (showing all the elements which compose the menu):
-	#screen.blit(home_page_purple, (0, 0))
-	pass
+	screen.blit(home_page_purple, (0, 0))
+	# Screen Commands:
+	login_runner = True
+	# Main Loop:
+	while login_runner:	
+		for event in pygame.event.get():
+			# Quit Command (Calls 'GameEnd' function):
+			if event.type == pygame.QUIT:
+				GameEnd()
+			# Keyboard Click Detection (and cosequential actions, depending where/what is clicked):
+			if event.type == pygame.KEYDOWN:
+
+			# Keyboard NUMBERS Input
+
+				# 0 Key Command
+				if event.key == pygame.K_0:
+					print('0')
+				# 1 Key Command
+				if event.key == pygame.K_1:
+					print('1')
+				# 2 Key Command
+				if event.key == pygame.K_2:
+					print('2')
+				# 3 Key Command
+				if event.key == pygame.K_3:
+					print('3')
+				# 4 Key Command
+				if event.key == pygame.K_4:
+					print('4')
+				# 5 Key Command
+				if event.key == pygame.K_5:
+					print('5')
+				# 6 Key Command
+				if event.key == pygame.K_6:
+					print('6')
+				# 7 Key Command
+				if event.key == pygame.K_7:
+					print('7')
+				# 8 Key Command
+				if event.key == pygame.K_8:
+					print('8')
+				# 9 Key Command
+				if event.key == pygame.K_9:
+					print('9')
+
+			# Keyboard LETTERS Imput
+
+				# A Key Command
+				if event.key == pygame.K_a or (event.key == pygame.K_a and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_a and event.key == pygame.K_LSHIFT):
+					print('A')
+				# B Key Command
+				if event.key == pygame.K_b or (event.key == pygame.K_b and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_b and event.key == pygame.K_LSHIFT):
+					print('B')
+				# C Key Command
+				if event.key == pygame.K_c or (event.key == pygame.K_c and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_c and event.key == pygame.K_LSHIFT):
+					print('C')
+				# D Key Command
+				if event.key == pygame.K_d or (event.key == pygame.K_d and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_d and event.key == pygame.K_LSHIFT):
+					print('D')
+				# E Key Command
+				if event.key == pygame.K_e or (event.key == pygame.K_e and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_e and event.key == pygame.K_LSHIFT):
+					print('E')
+				# F Key Command
+				if event.key == pygame.K_f or (event.key == pygame.K_f and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_f and event.key == pygame.K_LSHIFT):
+					print('F')
+				# G Key Command
+				if event.key == pygame.K_g or (event.key == pygame.K_g and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_g and event.key == pygame.K_LSHIFT):
+					print('G')
+				# H Key Command
+				if event.key == pygame.K_h or (event.key == pygame.K_h and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_h and event.key == pygame.K_LSHIFT):
+					print('H')
+				# I Key Command
+				if event.key == pygame.K_i or (event.key == pygame.K_i and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_i and event.key == pygame.K_LSHIFT):
+					print('I')
+				# J Key Command
+				if event.key == pygame.K_j or (event.key == pygame.K_j and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_j and event.key == pygame.K_LSHIFT):
+					print('J')
+				# K Key Command
+				if event.key == pygame.K_k or (event.key == pygame.K_k and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_k and event.key == pygame.K_LSHIFT):
+					print('K')
+				# L Key Command
+				if event.key == pygame.K_l or (event.key == pygame.K_l and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_l and event.key == pygame.K_LSHIFT):
+					print('L')
+				# M Key Command
+				if event.key == pygame.K_m or (event.key == pygame.K_m and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_m and event.key == pygame.K_LSHIFT):
+					print('M')
+				# N Key Command
+				if event.key == pygame.K_n or (event.key == pygame.K_n and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_n and event.key == pygame.K_LSHIFT):
+					print('N')
+				# O Key Command
+				if event.key == pygame.K_o or (event.key == pygame.K_o and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_o and event.key == pygame.K_LSHIFT):
+					print('O')
+				# P Key Command
+				if event.key == pygame.K_p or (event.key == pygame.K_p and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_p and event.key == pygame.K_LSHIFT):
+					print('P')
+				# Q Key Command
+				if event.key == pygame.K_q or (event.key == pygame.K_q and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_q and event.key == pygame.K_LSHIFT):
+					print('Q')
+				# R Key Command
+				if event.key == pygame.K_r or (event.key == pygame.K_r and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_r and event.key == pygame.K_LSHIFT):
+					print('R')
+				# S Key Command
+				if event.key == pygame.K_s or (event.key == pygame.K_s and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_s and event.key == pygame.K_LSHIFT):
+					print('S')
+				# T Key Command
+				if event.key == pygame.K_t or (event.key == pygame.K_t and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_t and event.key == pygame.K_LSHIFT):
+					print('T')
+				# U Key Command
+				if event.key == pygame.K_u or (event.key == pygame.K_u and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_u and event.key == pygame.K_LSHIFT):
+					print('U')
+				# V Key Command
+				if event.key == pygame.K_v or (event.key == pygame.K_v and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_v and event.key == pygame.K_LSHIFT):
+					print('V')
+				# W Key Command
+				if event.key == pygame.K_w or (event.key == pygame.K_w and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_w and event.key == pygame.K_LSHIFT):
+					print('W')
+				# X Key Command
+				if event.key == pygame.K_x or (event.key == pygame.K_x and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_x and event.key == pygame.K_LSHIFT):
+					print('X')
+				# Y Key Command
+				if event.key == pygame.K_y or (event.key == pygame.K_y and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_y and event.key == pygame.K_LSHIFT):
+					print('Y')
+				# Z Key Command
+				if event.key == pygame.K_z or (event.key == pygame.K_z and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_z and event.key == pygame.K_LSHIFT):
+					print('Z')
+
+
+
+				# Enter Command (Calls 'GameEnd' function):
+				if event.key == pygame.K_ENTER:
+					pass
+
 
 
 # -------------------------------------- HOME PAGE ---------------------------------------------- #
@@ -419,7 +581,6 @@ def LoadingPage():
 
 # -------------------------------------- GAME PAGE ---------------------------------------------- #
 
-
 def GamePage():
 	# Loop Controler:
 	game_runner = True
@@ -430,11 +591,23 @@ def GamePage():
 	barrier_angle = 0
 	index_barrier_pos = 0
 	barrier_runner = True
+	# Colliders pre-settings:
+	coll00 = Collider(fast_comet_original, 'h')
+#	coll01 = Collider(fast_comet_original, 'h')
+#	coll02 = Collider(fast_comet_original, 'h')
+#	coll03 = Collider(fast_comet_original, 'h')
+#	coll04 = Collider(fast_comet_original, 'h')
+#	coll05 = Collider(fast_comet_original, 'v')
+#	coll06 = Collider(fast_comet_original, 'v')
+#	coll07 = Collider(fast_comet_original, 'v')
+#	coll08 = Collider(fast_comet_original, 'v')
+#	coll09 = Collider(fast_comet_original, 'v')
 	# Game Loop
 	while game_runner:
 		rotating_planet = image_rotation_centered(planet_original, planet_angle)
 		rotating_barrier = image_rotation_centered(cursor_purple, barrier_angle)
 		# Loading Home Page (showing all the elements which compose the menu):
+		coll00.display()
 		screen.blit(game_space, (0, 0))
 		screen.blit(but_pause, (but_pause_pos[0][0], but_pause_pos[0][1])) 
 		screen.blit(planet_original, (planet_pos[0][0], planet_pos[0][1]))
@@ -517,6 +690,7 @@ def GameEnd():
 	quit()
 
 # --------------------------------- EXECUTION ------------------------------------------------ #
+
 
 HomePage()
 
