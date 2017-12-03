@@ -296,20 +296,21 @@ class Collider:
 			self.pos_x = random.randint(1, display_height)
 			self.pos_y = 0
 		# Rotation angle (used to rotate the image and make it pointing to the planets center)
-		self.angle = degrees(atan(self.pos_x/self.pos_y))
-		
+		self.angle = degrees(atan((self.pos_x-display_width/2)/(self.pos_y-display_height/2)))-90
 		# Mode Classification:
 		if self.mode == 'n' or self.mode == 'normal':
 			self.speed = 10
 		if self.mode == 'f' or self.mode == 'fast':
 			self.speed = 15
-	
+		if self.mode == 's' or self.mode == 'ship':
+			pass
+		print('angle: ', self.angle)
 
 	def display(self):
 		"""Rotate image and show it on screen"""
 		self.rotated_collider = pygame.transform.rotate(self.image, self.angle)
 		screen.blit(self.rotated_collider, (self.pos_x, self.pos_y))
-		print("({}, {})".format(self.pos_x, self.pos_y))
+#		print("({}, {})".format(self.pos_x, self.pos_y))
 
 	def update_pos(self):
 		"""Update Collider position (generating movement)"""
@@ -319,10 +320,11 @@ class Collider:
 		self.pos_y += int(round(delta_y))
 
 	def collision(self):
+#		return True		
 		pass
 
 	def reset_pos(self):
-		if collision == True:
+		if collision(self) == True:
 			if self.orientation == 'h' or self.orientation == 'horizontal':
 				self.pos_x = 0
 				self.pos_y = random.randint(1, display_width)
