@@ -132,8 +132,8 @@ game_page_purple = pygame.image.load(r'.\Images\Background\game_purple_small.png
 # game_page_orange = pygame.image.load(r'.\Images\Background\home_orange.png')
 # game_page_gray = pygame.image.load(r'.\Images\Background\home_gray.png')
 
-# Loading Page Background:
-
+# Login Page Background:
+login_page_original = pygame.image.load(r'.\Images\Background\login_page_original.png')
 
 # Navigation Bar:
 # navbar_original = pygame.image.load(r'.\Images\Background\NavBar\navbar_original.png')
@@ -332,17 +332,20 @@ class PlayerTwo:
 
 
 # Buttons:
-but_play_pos = [[int((display_height - 180)/2), int((display_width - 180)/2)], [int((display_height + 165)/2), int((display_width + 180)/2)]]
-but_logoff_pos = [[169, 146], [169 + 109, 146 + 120]]
-but_volon_pos = [[338, 243], [338 + 106, 243 + 122]]
-but_voloff_pos = [[338, 243], [338 + 106, 243 + 122]]
-but_profile_pos = [[2, 243], [2 + 109, 243 + 120]]
-but_pause_pos = [[375, 3], [375 + 73, 3 + 81]]
-but_pause_yes_pos = [[55, 347], [55 + 81, 347 + 92]]
-but_pause_no_pos = [[333, 347], [333 + 81, 347 + 93]]
-but_star_pos = [[169, 535], [169  + 110, 535 + 121]]
-but_config_pos = [[338, 435], [338  + 110, 435 + 121]]
-but_store_pos = [[-1, 437], [-1  + 110, 437 + 121]]
+but_play_pos = [[int((display_height - 180)/2), int((display_width - 180)/2)], 
+				[int((display_height + 165)/2), int((display_width + 180)/2)]]
+but_logoff_pos = [[169/450*int(display_height), 146/800*int(display_width)], 
+				  [(169 + 109)/450*int(display_height), (146 + 120)/800*int(display_width)]]
+but_volon_pos = [[(338), (243)], [(338 + 106), (243 + 122)]]
+but_voloff_pos = [[(338), (243)], [(338 + 106), (243 + 122)]]
+but_profile_pos = [[(2)/450*int(display_height), (243)], [(2 + 109), (243 + 120)]]
+but_pause_pos = [[(375)/450*int(display_height), (3)/800*int(display_width)], [(375 + 73), (3 + 81)]]
+but_pause_yes_pos = [[(55)/450*int(display_height), (347)/800*int(display_width)], [(55 + 81), (347 + 92)]]
+but_pause_no_pos = [[(333)/450*int(display_height), (347)/800*int(display_width)], [(333 + 81), (347 + 93)]]
+but_star_pos = [[(169)/450*int(display_height), (535)/800*int(display_width)], [(169  + 110), (535 + 121)]]
+but_config_pos = [[(338)/450*int(display_height), (435)/800*int(display_width)], [(338  + 110), (435 + 121)]]
+but_store_pos = [[(-1)/450*int(display_height), (437)/800*int(display_width)], [(-1  + 110), (437 + 121)]]
+but_login_confirm = [[(198)/450*int(display_height), (488)/800*int(display_width)], [(198 + 81)/450*int(display_height), (488 + 92)]]
 
 # Planets:
 planet_pos = [[int((display_height - 121)/2), int((display_width - 121)/2)], [int((display_height + 121)/2), int((display_width + 121)/2)]]
@@ -360,7 +363,8 @@ cursor_y_pos = orbital_trajectory(117)[:, 1] + int((display_width - 121)/2)
 # Main loop
 def LoginPage():
 	# Loading Home Page (showing all the elements which compose the menu):
-	screen.blit(home_page_purple, (0, 0))
+	screen.blit(login_page_original, (0, 0))
+	screen.blit(but_pause_yes, (but_login_confirm[0][0] , but_login_confirm[0][1]))
 	# Screen Commands:
 	login_runner = True
 	# Input selector key:
@@ -381,70 +385,70 @@ def LoginPage():
 			# Keyboard NUMBERS Input:
 
 				# 0 Key Command:
-				if event.key == pygame.K_0:
+				if event.key == pygame.K_0 or event.key == pygame.K_KP0:
 					if username_control == True:
 						username_input.append('0')
 					if useremail_control == True:
 						useremail_input.append('0')
 					print('0')
 				# 1 Key Command:
-				if event.key == pygame.K_1:
+				if event.key == pygame.K_1 or event.key == pygame.K_KP1:
 					if username_control == True:
 						username_input.append('1')
 					if useremail_control == True:
 						useremail_input.append('1')
 					print('1')
 				# 2 Key Command:
-				if event.key == pygame.K_2:
+				if event.key == pygame.K_2 or event.key == pygame.K_KP2:
 					if username_control == True:
 						username_input.append('2')
 					if useremail_control == True:
 						useremail_input.append('2')
 					print('2')
 				# 3 Key Command:
-				if event.key == pygame.K_3:
+				if event.key == pygame.K_3 or event.key == pygame.K_KP3:
 					if username_control == True:
 						username_input.append('3')
 					if useremail_control == True:
 						useremail_input.append('3')
 					print('3')
 				# 4 Key Command:
-				if event.key == pygame.K_4:
+				if event.key == pygame.K_4 or event.key == pygame.K_KP4:
 					if username_control == True:
 						username_input.append('4')
 					if useremail_control == True:
 						useremail_input.append('4')
 					print('4')
 				# 5 Key Command:
-				if event.key == pygame.K_5:
+				if event.key == pygame.K_5 or event.key == pygame.K_KP5:
 					if username_control == True:
 						username_input.append('5')
 					if useremail_control == True:
 						useremail_input.append('5')
 					print('5')
 				# 6 Key Command:
-				if event.key == pygame.K_6:
+				if event.key == pygame.K_6 or event.key == pygame.K_KP6:
 					if username_control == True:
 						username_input.append('6')
 					if useremail_control == True:
 						useremail_input.append('6')
 					print('6')
 				# 7 Key Command:
-				if event.key == pygame.K_7:
+				if event.key == pygame.K_7 or event.key == pygame.K_KP7:
 					if username_control == True:
 						username_input.append('7')
 					if useremail_control == True:
 						useremail_input.append('7')
 					print('7')
 				# 8 Key Command:
-				if event.key == pygame.K_8:
+				if event.key == pygame.K_8 or event.key == pygame.K_KP8:
 					if username_control == True:
 						username_input.append('8')
 					if useremail_control == True:
 						useremail_input.append('8')
 					print('8')
 				# 9 Key Command:
-				if event.key == pygame.K_9:
+				if event.key == pygame.K_9 or event.key == pygame.K_KP9:
 					if username_control == True:
 						username_input.append('9')
 					if useremail_control == True:
@@ -655,7 +659,7 @@ def LoginPage():
 						useremail_input.append('@')
 					print('@')	
 				# Dot Key Command:
-				if (event.key == pygame.K_2 and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_SPACE and event.key == pygame.K_LSHIFT):
+				if (event.key == pygame.K_2 & event.key == pygame.KMOD_RSHIFT) or (event.key == pygame.K_SPACE and event.key == pygame.K_LSHIFT):
 					if username_control == True:
 						pass
 					if useremail_control == True:
