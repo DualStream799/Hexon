@@ -90,6 +90,10 @@ clock = pygame.time.Clock()
 # number_9 = pygame.image.load(r'.\Images\Alphabet\number_9.png')
 
 # Special Characteres: 
+# spec_char_period = pygame.image.load(r'.\Images\Alphabet\spec_char_period.png')
+# spec_char_underline = pygame.image.load(r'.\Images\Alphabet\spec_char_underline.png')
+# spec_char_at = pygame.image.load(r'.\Images\Alphabet\spec_char_at.png')
+# spec_char_hifen = pygame.image.load(r'.\Images\Alphabet\spec_char_hifen.png')
 
 
 # Cursor:
@@ -168,7 +172,7 @@ but_logoff = pygame.image.load(r'.\Images\Buttons\Small\hex_but_logoff_small.png
 cursor_purple = pygame.image.load(r'.\Images\Cursor\Barrier.png')
 
 # Colliders:
-fast_comet_original = pygame.image.load(r'.\Images\Colliders\fast_comet_original.png')
+fast_comet_original = pygame.image.load(r'.\Images\Colliders\fast_comet_original_small.png')
 
 
 # PowerUps:
@@ -265,34 +269,66 @@ def GameInput():
 class Collider:
 	"""
 	"""
-	def __init__(self, image, orientation):
-		"""Loading all pre-set configurations for the class methods"""
-		self.orientation = orientation
+	def __init__(self, image, orientation, mode):
+		"""Loading all pre-set configurations for the class methods
 
+		Libraries importation required:
+		    - randint ( import random)
+		    - degrees ( import math )
+		    - atan    ( import math )
+		    - sin     ( import math )
+		    - cos     ( import math )
+
+		Parameters:
+			- image       (pygame.Surface)
+			- orientation (string)
+			- mode        (string)
+		"""
+		# Configurating recieved parameters:
+		self.image = image
+		self.orientation = orientation
+		self.mode = mode
+		# Orientation classification:
 		if self.orientation == 'h' or self.orientation == 'horizontal':
-			self.pos_x = 100
-#			self.pos_y = random.randint(1, display_width)
-			self.pos_y = 200
+			self.pos_x = 0
+			self.pos_y = random.randint(1, display_width)
 		if self.orientation == 'v' or self.orientation == 'vertical':
 			self.pos_x = random.randint(1, display_height)
 			self.pos_y = 0
 		# Rotation angle (used to rotate the image and make it pointing to the planets center)
 		self.angle = degrees(atan(self.pos_x/self.pos_y))
-		# Image load
-		self.image = image
-		# Image rotation
-		self.rotated_collider = pygame.transform.rotate(self.image, self.angle)
+		
+		# Mode Classification:
+		if self.mode == 'n' or self.mode == 'normal':
+			self.speed = 10
+		if self.mode == 'f' or self.mode == 'fast':
+			self.speed = 15
+	
 
 	def display(self):
-		"""Show the rotated image on screen"""
+		"""Rotate image and show it on screen"""
+		self.rotated_collider = pygame.transform.rotate(self.image, self.angle)
 		screen.blit(self.rotated_collider, (self.pos_x, self.pos_y))
+		print("({}, {})".format(self.pos_x, self.pos_y))
 
 	def update_pos(self):
-		self.pos_x += int(round(0))
-		self.pos_y += int(round(0))
+		"""Update Collider position (generating movement)"""
+		delta_x = math.cos(self.angle)*self.speed
+		delta_y = math.sin(self.angle)*self.speed
+		self.pos_x += int(round(delta_x))
+		self.pos_y += int(round(delta_y))
 
-	def collide(self):
+	def collision(self):
 		pass
+
+	def reset_pos(self):
+		if collision == True:
+			if self.orientation == 'h' or self.orientation == 'horizontal':
+				self.pos_x = 0
+				self.pos_y = random.randint(1, display_width)
+			if self.orientation == 'v' or self.orientation == 'vertical':
+				self.pos_x = random.randint(1, display_height)
+				self.pos_y = 0
 
 # Barrier Class (Object User controled):
 class Barrier:
@@ -332,23 +368,71 @@ class PlayerTwo:
 
 
 # Buttons:
-but_play_pos = [[int((display_height - 180)/2), int((display_width - 180)/2)], 
-				[int((display_height + 165)/2), int((display_width + 180)/2)]]
-but_logoff_pos = [[169/450*int(display_height), 146/800*int(display_width)], 
-				  [(169 + 109)/450*int(display_height), (146 + 120)/800*int(display_width)]]
-but_volon_pos = [[(338), (243)], [(338 + 106), (243 + 122)]]
-but_voloff_pos = [[(338), (243)], [(338 + 106), (243 + 122)]]
-but_profile_pos = [[(2)/450*int(display_height), (243)], [(2 + 109), (243 + 120)]]
-but_pause_pos = [[(375)/450*int(display_height), (3)/800*int(display_width)], [(375 + 73), (3 + 81)]]
-but_pause_yes_pos = [[(55)/450*int(display_height), (347)/800*int(display_width)], [(55 + 81), (347 + 92)]]
-but_pause_no_pos = [[(333)/450*int(display_height), (347)/800*int(display_width)], [(333 + 81), (347 + 93)]]
-but_star_pos = [[(169)/450*int(display_height), (535)/800*int(display_width)], [(169  + 110), (535 + 121)]]
-but_config_pos = [[(338)/450*int(display_height), (435)/800*int(display_width)], [(338  + 110), (435 + 121)]]
-but_store_pos = [[(-1)/450*int(display_height), (437)/800*int(display_width)], [(-1  + 110), (437 + 121)]]
-but_login_confirm = [[(198)/450*int(display_height), (488)/800*int(display_width)], [(198 + 81)/450*int(display_height), (488 + 92)]]
+but_play_pos = [[int((display_height - 180)/2),
+				 int((display_width - 180)/2)], 
+				[int((display_height + 165)/2),
+				 int((display_width + 180)/2)]]
+
+but_logoff_pos = [[int(( 169 )/450*display_height),
+				   int(( 146 )/800*display_width)], 
+				  [int(( 169 + 109 )/450*display_height),
+				   int(( 146 + 120 )/800*display_width)]]
+
+but_volon_pos = [[int(( 338 )/450*display_height),
+				  int(( 243 )/800*display_width)],
+				 [int(( 338 + 106 )/450*display_height),
+				  int(( 243 + 122 )/800*display_width)]]
+
+but_voloff_pos = [[int(( 338 )/450*display_height),
+  				   int(( 243 )/800*display_width)],
+				  [int(( 338 + 106 )/450*display_height),
+				   int(( 243 + 122 )/800*display_width)]]
+
+but_profile_pos = [[int(( 2 )/450*display_height), 
+				    int(( 243 )/800*display_width)],
+				   [int(( 2 + 109 )/450*display_height), 
+				    int(( 243 + 120 )/800*display_width)]]
+
+but_pause_pos = [[int(( 375 )/450*display_height),
+				  int(( 3 )/800*display_width)],
+				 [int(( 375 + 73 )/450*display_height),
+				  int(( 3 + 81 )/800*display_width)]]
+
+but_pause_yes_pos = [[int(( 55 )/450*display_height),
+					  int(( 347 )/800*display_width)],
+					 [int(( 55 + 81 )/450*display_height),
+					  int(( 347 + 92 )/800*display_width)]]
+
+but_pause_no_pos = [[int(( 333 )/450*display_height),
+					 int(( 347 )/800*display_width)],
+				    [int(( 333 + 81 )/450*display_height),
+				     int(( 347 + 93 )/800*display_width)]]
+
+but_star_pos = [[int(( 169 )/450*display_height),
+				 int(( 535 )/800*display_width)],
+			    [int(( 169  + 110 )/450*display_height), 
+			     int(( 535 + 121 )/800*display_width)]]
+
+but_config_pos = [[int(( 338 )/450*display_height),
+				   int(( 435 )/800*display_width)],
+				  [int(( 338  + 110 )/450*display_height),
+				   int(( 435 + 121 )/800*display_width)]]
+
+but_store_pos = [[int((-1)/450*display_height),
+				  int((437)/800*display_width)],
+				 [int((-1  + 110)/450*display_height),
+				  int((437 + 121)/800*display_width)]]
+
+but_login_confirm = [[int((198)/450*display_height),
+					  int((488)/800*display_width)],
+					 [int((198 + 81)/450*display_height),
+					  int((488 + 92)/800*display_width)]]
 
 # Planets:
-planet_pos = [[int((display_height - 121)/2), int((display_width - 121)/2)], [int((display_height + 121)/2), int((display_width + 121)/2)]]
+planet_pos = [[int((display_height - 121)/2),
+			   int((display_width - 121)/2)],
+			  [int((display_height + 121)/2),
+			   int((display_width + 121)/2)]]
 
 # Barrier X axis:
 cursor_x_pos = orbital_trajectory(117)[:, 0] + int((display_height - 121)/2)
@@ -851,7 +935,7 @@ def GamePage():
 	index_barrier_pos = 0
 	barrier_runner = True
 	# Colliders pre-settings:
-	coll00 = Collider(fast_comet_original, 'h')
+	coll00 = Collider(fast_comet_original, 'h', 'n')
 #	coll01 = Collider(fast_comet_original, 'h')
 #	coll02 = Collider(fast_comet_original, 'h')
 #	coll03 = Collider(fast_comet_original, 'h')
@@ -872,6 +956,7 @@ def GamePage():
 		screen.blit(planet_original, (planet_pos[0][0], planet_pos[0][1]))
 		screen.blit(rotating_planet, (planet_pos[0][0], planet_pos[0][1]))
 		screen.blit(rotating_barrier, (cursor_x_pos[index_barrier_pos], cursor_y_pos[index_barrier_pos]))
+		coll00.display()
 		# Screen Commands:
 		for event in pygame.event.get():
 			# Quit Command (Calls 'GameEnd' function): 
@@ -951,7 +1036,7 @@ def GameEnd():
 # --------------------------------- EXECUTION ------------------------------------------------ #
 
 
-LoginPage()
+HomePage()
 
 # ----------------------------------- IDEAS ------------------------------------------------- #
 
