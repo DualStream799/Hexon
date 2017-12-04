@@ -12,8 +12,11 @@ Current Version: 1.0.0
 
 
 from scipy.integrate import odeint 
+from random import randint
 from math import degrees
 from math import atan
+from math import sin
+from math import cos
 from math import pi
 
 import numpy as np
@@ -47,6 +50,7 @@ clock = pygame.time.Clock()
 
 
 # ------------------------------------ IMAGES ------------------------------------------------- #
+
 
 # Letters:
 # letter_a = pygame.image.load(r'.\Images\Alphabet\letter_a.png')
@@ -88,6 +92,7 @@ clock = pygame.time.Clock()
 # number_7 = pygame.image.load(r'.\Images\Alphabet\number_7.png')
 # number_8 = pygame.image.load(r'.\Images\Alphabet\number_8.png')
 # number_9 = pygame.image.load(r'.\Images\Alphabet\number_9.png')
+
 
 # Special Characteres: 
 # spec_char_period = pygame.image.load(r'.\Images\Alphabet\spec_char_period.png')
@@ -273,11 +278,11 @@ class Collider:
 		"""Loading all pre-set configurations for the class methods
 
 		Libraries importation required:
-		    - randint ( import random)
-		    - degrees ( import math )
-		    - atan    ( import math )
-		    - sin     ( import math )
-		    - cos     ( import math )
+		    - randint ( from random import randint )
+		    - degrees ( from math import degrees)
+		    - atan    ( from math import atan)
+		    - sin     ( from math import sin)
+		    - cos     ( from math import cos )
 
 		Parameters:
 			- image       (pygame.Surface)
@@ -289,19 +294,19 @@ class Collider:
 		self.orientation = orientation
 		self.mode = mode
 		# Orientation classification:
-		if self.orientation == 'h' or self.orientation == 'horizontal':
-			self.pos_x = 0
-			self.pos_y = random.randint(1, display_width)
-		if self.orientation == 'v' or self.orientation == 'vertical':
-			self.pos_x = random.randint(1, display_height)
+		if self.orientation == 'w' or self.orientation == 'up':
+			self.pos_x = randint(1, display_height)
 			self.pos_y = 0
-		# Rotation angle (used to rotate the image and make it pointing to the planets center)
-		self.angle = degrees(atan((self.pos_x-display_width/2)/(self.pos_y-display_height/2)))-90
-		# Mode Classification:
+		if self.orientation == 'a' or self.orientation == 'left':
+			self.pos_x = 0
+			self.pos_y = randint(1, display_width)
+
+		# Rotation angle (used to rotate the image and make it pointing to the planets center):
+		self.angle = - degrees(atan((display_width/2 - self.pos_y)/(display_height/2 - self.pos_x))) + 180
 		if self.mode == 'n' or self.mode == 'normal':
-			self.speed = 10
+			self.speed = 5
 		if self.mode == 'f' or self.mode == 'fast':
-			self.speed = 15
+			self.speed = 10
 		if self.mode == 's' or self.mode == 'ship':
 			pass
 		print('angle: ', self.angle)
@@ -310,16 +315,17 @@ class Collider:
 		"""Rotate image and show it on screen"""
 		self.rotated_collider = pygame.transform.rotate(self.image, self.angle)
 		screen.blit(self.rotated_collider, (self.pos_x, self.pos_y))
-#		print("({}, {})".format(self.pos_x, self.pos_y))
 
 	def update_pos(self):
-		"""Update Collider position (generating movement)"""
-		delta_x = math.cos(self.angle)*self.speed
-		delta_y = math.sin(self.angle)*self.speed
-		self.pos_x += int(round(delta_x))
-		self.pos_y += int(round(delta_y))
+		"""Update Collider position (generating moviment)"""
+		delta_x = cos(self.angle)*self.speed
+		delta_y = sin(self.angle)*self.speed
+		self.pos_x -= (delta_x)
+		self.pos_y -= (delta_y)
+#		print(delta_x, delta_y)
 
 	def collision(self):
+		"""  """
 #		return True		
 		pass
 
@@ -412,23 +418,23 @@ but_pause_no_pos = [[int(( 333 )/450*display_height),
 
 but_star_pos = [[int(( 169 )/450*display_height),
 				 int(( 535 )/800*display_width)],
-			    [int(( 169  + 110 )/450*display_height), 
+			    [int(( 169 + 110 )/450*display_height), 
 			     int(( 535 + 121 )/800*display_width)]]
 
 but_config_pos = [[int(( 338 )/450*display_height),
 				   int(( 435 )/800*display_width)],
-				  [int(( 338  + 110 )/450*display_height),
+				  [int(( 338 + 110 )/450*display_height),
 				   int(( 435 + 121 )/800*display_width)]]
 
-but_store_pos = [[int((-1)/450*display_height),
-				  int((437)/800*display_width)],
-				 [int((-1  + 110)/450*display_height),
-				  int((437 + 121)/800*display_width)]]
+but_store_pos = [[int(( -1 )/450*display_height),
+				  int(( 437 )/800*display_width)],
+				 [int(( -1 + 110 )/450*display_height),
+				  int(( 437 + 121 )/800*display_width)]]
 
-but_login_confirm = [[int((198)/450*display_height),
-					  int((488)/800*display_width)],
-					 [int((198 + 81)/450*display_height),
-					  int((488 + 92)/800*display_width)]]
+but_login_confirm = [[int(( 198 )/450*display_height),
+					  int(( 488 )/800*display_width)],
+					 [int(( 198 + 81 )/450*display_height),
+					  int(( 488 + 92 )/800*display_width)]]
 
 # Planets:
 planet_pos = [[int((display_height - 121)/2),
@@ -937,16 +943,8 @@ def GamePage():
 	index_barrier_pos = 0
 	barrier_runner = True
 	# Colliders pre-settings:
-	coll00 = Collider(fast_comet_original, 'h', 'n')
-#	coll01 = Collider(fast_comet_original, 'h')
-#	coll02 = Collider(fast_comet_original, 'h')
-#	coll03 = Collider(fast_comet_original, 'h')
-#	coll04 = Collider(fast_comet_original, 'h')
-#	coll05 = Collider(fast_comet_original, 'v')
-#	coll06 = Collider(fast_comet_original, 'v')
-#	coll07 = Collider(fast_comet_original, 'v')
-#	coll08 = Collider(fast_comet_original, 'v')
-#	coll09 = Collider(fast_comet_original, 'v')
+	coll00 = Collider(fast_comet_original, 'a', 'n')
+
 	# Game Loop
 	while game_runner:
 		rotating_planet = image_rotation_centered(planet_original, planet_angle)
@@ -1022,6 +1020,7 @@ def GamePage():
 		# Rate Command Control (check pressed buttons each 3 loop cycles):
 		if ticker >= 3:
 			ticker = 0
+			coll00.update_pos()
 		else:
 			ticker += 1
 
