@@ -287,11 +287,13 @@ def collider_trajectory(init_values, step):
 	# Linear Coeficient:
 	b = y1 - m*x1
 	# X and Y values list:
-	xlist = np.linspace(x1, x2, step)
+	counter = np.linspace(x1, x2, step)
+	xlist = []
 	ylist = []
 
-	for x_val in xlist:
-		y_val = m*x_val + b
+	for val in counter:
+		y_val = m*val + b
+		xlist.append(val)
 		ylist.append(y_val)
 
 	return [xlist, ylist]
@@ -330,9 +332,9 @@ class Collider:
 		# Orientation classification:
 		if self.orientation == 'w' or self.orientation == 'up':
 			self.pos_x = randint(1, display_height)
-			self.pos_y = -10
+			self.pos_y = -100
 		if self.orientation == 'a' or self.orientation == 'left':
-			self.pos_x = -10
+			self.pos_x = -100
 			self.pos_y = randint(1, display_width)
 
 		# Rotation angle (used to rotate the image and make it pointing to the planets center):
@@ -347,22 +349,27 @@ class Collider:
 
 		# Calculating trajectory:
 		self.pos_index = 1
-		self.trajectory = collider_trajectory([self.pos_x, self.pos_y, 0, 0], step=self.speed*10)
-
+		self.trajectory = collider_trajectory([(display_height/2 - self.pos_x),(display_width/2 - self.pos_y), 0, 0], step=self.speed*10)
+		print((self.trajectory[0][::10]))
+		print((self.trajectory[1][::10]))
 
 	def display(self):
 		'''Rotate image and show it on screen'''
 		self.rotated_collider = pygame.transform.rotate(self.image, self.angle)
-		screen.blit(self.rotated_collider, (self.pos_x, self.pos_y))
+		screen.blit(self.rotated_collider, (display_height/2 - self.pos_x, display_width/2 - self.pos_y))
 
 
 	def update_pos(self):
 		'''Update Collider position (generating moviment)'''
 		self.list_x = self.trajectory[0][:]
 		self.list_y = self.trajectory[1][:]
+		self.list_x.reverse()
+		self.list_y.reverse()
 		self.pos_x = self.list_x[self.pos_index]
 		self.pos_y = self.list_y[self.pos_index]
 		self.pos_index += 1
+		if self.pos_index == 50:
+			self.pos_index = 50
 
 	def collision(self):
 		"""  """
