@@ -262,6 +262,40 @@ def collider_spawn():
 	rotated_collider = pygame.transform.rotate(fast_comet_original, collider_angle)
 	screen.blit(rotated_collider, (random_x, random_y))
 
+# Calculate Colliders' trajectory:
+def collider_trajectory(init_values, step):
+	'''Recieve two points in Carteisan system (2 doubles of tuples)
+	and calclates the linear function which pass on them.
+
+	Libraries importation required:
+		    - randint ( from numpy import linspace )
+
+	Parameters:
+		- init_values (list) : [ x1, y1, x2, y2]
+		- step (integer or float)
+
+	Returns:
+		- [xlist, ylist] (list of lists)
+	'''
+	# Loading values
+	x1 = init_values[0]
+	y1 = init_values[1]
+	x2 = init_values[2]
+	y2 = init_values[3]
+	# Angular Coeficient:
+	m = (y1 - y2)/(x1 - x2)
+	# Linear Coeficient:
+	b = y1 - m*x1
+	# X and Y values list:
+	xlist = np.linspace(x1, x2, step)
+	ylist = []
+
+	for x_val in xlist:
+		y_val = m*x_val + b
+		ylist.append(y_val)
+
+	return [xlist, ylist]
+
 
 def GameInput():
 		pass
@@ -296,9 +330,9 @@ class Collider:
 		# Orientation classification:
 		if self.orientation == 'w' or self.orientation == 'up':
 			self.pos_x = randint(1, display_height)
-			self.pos_y = 0
+			self.pos_y = -10
 		if self.orientation == 'a' or self.orientation == 'left':
-			self.pos_x = 0
+			self.pos_x = -10
 			self.pos_y = randint(1, display_width)
 
 		# Rotation angle (used to rotate the image and make it pointing to the planets center):
@@ -311,18 +345,24 @@ class Collider:
 			pass
 		print('angle: ', self.angle)
 
+		# Calculating trajectory:
+		self.pos_index = 1
+		self.trajectory = collider_trajectory([self.pos_x, self.pos_y, 0, 0], step=self.speed*10)
+
+
 	def display(self):
-		"""Rotate image and show it on screen"""
+		'''Rotate image and show it on screen'''
 		self.rotated_collider = pygame.transform.rotate(self.image, self.angle)
 		screen.blit(self.rotated_collider, (self.pos_x, self.pos_y))
 
+
 	def update_pos(self):
-		"""Update Collider position (generating moviment)"""
-		delta_x = cos(self.angle)*self.speed
-		delta_y = sin(self.angle)*self.speed
-		self.pos_x -= (delta_x)
-		self.pos_y -= (delta_y)
-#		print(delta_x, delta_y)
+		'''Update Collider position (generating moviment)'''
+		self.list_x = self.trajectory[0][:]
+		self.list_y = self.trajectory[1][:]
+		self.pos_x = self.list_x[self.pos_index]
+		self.pos_y = self.list_y[self.pos_index]
+		self.pos_index += 1
 
 	def collision(self):
 		"""  """
@@ -331,12 +371,14 @@ class Collider:
 
 	def reset_pos(self):
 		if collision(self) == True:
-			if self.orientation == 'h' or self.orientation == 'horizontal':
-				self.pos_x = 0
-				self.pos_y = random.randint(1, display_width)
-			if self.orientation == 'v' or self.orientation == 'vertical':
+			if self.orientation == 'w' or self.orientation == 'up':
 				self.pos_x = random.randint(1, display_height)
 				self.pos_y = 0
+			if self.orientation == 'a' or self.orientation == 'left':
+				self.pos_x = 0
+				self.pos_y = random.randint(1, display_width)
+
+				
 
 # Barrier Class (Object User controled):
 class Barrier:
