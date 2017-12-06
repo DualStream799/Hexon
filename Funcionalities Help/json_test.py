@@ -6,15 +6,13 @@ with open('Players Data/players_profile.json') as json_file:
 	players_data = json.load(json_file)
 
 pprint(players_data)
-# Inputs:
-input_username = input("Insert Username: ")
-input_password = input("Insert Password: ")
 
-# Loop 1:
+# Trying to log in:
 try:
+	input_username = input("Insert Username: ")
 	players_data[input_username]
-	# Loop 2:
 	try:
+		input_password = input("Insert Password: ")
 		players_data[input_username][input_password]
 	except KeyError:
 		print("Invalid Password")
@@ -26,20 +24,19 @@ except KeyError:
 except Exception:
 		print("Unknown error\nPlease contact support")
 
-
+# Inputs:
 new_username = input("Insert new username: ")
 new_password = input("Insert new password: ")
 new_email = input("insert new email: ")
-
+# Organizing new data in JSON format(a dictionary of dictionaries):
 players_data[new_username] = {new_password: {'Email': new_email,
 											 'HX$': 0,
 											 'HighScore': 0,
 											 'XP': 0,
 											 'Level': 0,
-											 'Etatus': 'Player',
+											 'Status': 'Player',
 											 'TimePlayed': 0}}
-pprint(players_data)
 
+# Saving data on JSON file:
 with open('Players Data/players_profile.json', 'w') as json_file:
 	json.dump(players_data, json_file)
-	

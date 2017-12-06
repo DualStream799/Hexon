@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/PycharmProjects/Insper/Software Design/Class 18/.idea/Class 18.iml" filepath="$USER_HOME$/PycharmProjects/Insper/Software Design/Class 18/.idea/Class 18.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Hexon.iml" filepath="$PROJECT_DIR$/.idea/Hexon.iml" />
       <module fileurl="file://$USER_HOME$/PycharmProjects/Insper/Software Design/Kivy Tests/.idea/Kivy Tests.iml" filepath="$USER_HOME$/PycharmProjects/Insper/Software Design/Kivy Tests/.idea/Kivy Tests.iml" />
     </modules>

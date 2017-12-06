@@ -10,7 +10,7 @@ Current Version: 1.0.0
 
 # ------------------------------------ LIBRARIES ------------------------------------------------ #
 
-
+# Python built in libraries:
 from scipy.integrate import odeint 
 from random import randint
 from math import degrees
@@ -18,14 +18,14 @@ from math import atan
 from math import sin
 from math import cos
 from math import pi
-
 import numpy as np
 import pygame
 import random
 import time
 import math
-# import json
-
+import json
+# Other libraries:
+from textbox import TextBox
 
 # --------------------------------- INICIALIZATION ---------------------------------------------- #
 
@@ -349,7 +349,7 @@ class Collider:
 
 		# Calculating trajectory:
 		self.pos_index = 1
-		self.trajectory = collider_trajectory([(display_height/2 - self.pos_x),(display_width/2 - self.pos_y), 0, 0], step=self.speed*10)
+		self.trajectory = collider_trajectory([self.pos_x,self.pos_y, 450/2, 800/2], step=self.speed*10)
 		print((self.trajectory[0][::10]))
 		print((self.trajectory[1][::10]))
 
@@ -506,6 +506,11 @@ def LoginPage():
 	# Loading Home Page (showing all the elements which compose the menu):
 	screen.blit(login_page_original, (0, 0))
 	screen.blit(but_pause_yes, (but_login_confirm[0][0] , but_login_confirm[0][1]))
+	# 
+	email_input = TextBox((100,100,250,30), command=self.change_color, clear_on_enter=True, inactive_on_enter=False)
+    username_input = TextBox((100,150,250,30), command=self.change_text_color, clear_on_enter=True, inactive_on_enter=False, active=False)
+    password_input = TextBox((100,370,250,30), command=self.change_text_color, clear_on_enter=True, inactive_on_enter=False, active=False)
+    input_list = [email_input, username_input, password_input]
 	# Screen Commands:
 	login_runner = True
 	# Input selector key:
