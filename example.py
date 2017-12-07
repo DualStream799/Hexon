@@ -27,6 +27,7 @@ class Control(object):
         font = pygame.font.SysFont("arial", 20)
         message = 'Username (A-Z  0-9):'
         rend = font.render(message, True, pygame.Color("gray"))
+        print((rend, rend.get_rect(topleft=(10,35))))
         return (rend, rend.get_rect(topleft=(10,35)))
 
     def event_loop(self):

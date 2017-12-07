@@ -24,7 +24,9 @@ import random
 import time
 import math
 import json
-# Other libraries:
+import sys
+import os
+# External libraries:
 from textbox import TextBox
 
 # --------------------------------- INICIALIZATION ---------------------------------------------- #
@@ -349,32 +351,29 @@ class Collider:
 
 		# Calculating trajectory:
 		self.pos_index = 1
-		self.trajectory = collider_trajectory([self.pos_x,self.pos_y, 450/2, 800/2], step=self.speed*10)
+		self.trajectory = collider_trajectory([self.pos_x - display_height/2, - self.pos_y + display_width/2, 0, 0], step=self.speed*10)
 		print((self.trajectory[0][::10]))
 		print((self.trajectory[1][::10]))
 
 	def display(self):
 		'''Rotate image and show it on screen'''
 		self.rotated_collider = pygame.transform.rotate(self.image, self.angle)
-		screen.blit(self.rotated_collider, (display_height/2 - self.pos_x, display_width/2 - self.pos_y))
-
+		screen.blit(self.rotated_collider, (display_height/2 + self.pos_x, display_width/2 - self.pos_y))
 
 	def update_pos(self):
 		'''Update Collider position (generating moviment)'''
 		self.list_x = self.trajectory[0][:]
 		self.list_y = self.trajectory[1][:]
-		self.list_x.reverse()
-		self.list_y.reverse()
 		self.pos_x = self.list_x[self.pos_index]
 		self.pos_y = self.list_y[self.pos_index]
 		self.pos_index += 1
-		if self.pos_index == 50:
-			self.pos_index = 50
+		if self.pos_index == 49:
+			self.pos_index = 49
 
 	def collision(self):
-		"""  """
-#		return True		
-		pass
+		if self.pos_x < 100 or self.pos_y < 100:
+			reset_pos()
+		
 
 	def reset_pos(self):
 		if collision(self) == True:
@@ -506,11 +505,13 @@ def LoginPage():
 	# Loading Home Page (showing all the elements which compose the menu):
 	screen.blit(login_page_original, (0, 0))
 	screen.blit(but_pause_yes, (but_login_confirm[0][0] , but_login_confirm[0][1]))
-	# 
+	#
+	""" 
 	email_input = TextBox((100,100,250,30), command=self.change_color, clear_on_enter=True, inactive_on_enter=False)
     username_input = TextBox((100,150,250,30), command=self.change_text_color, clear_on_enter=True, inactive_on_enter=False, active=False)
     password_input = TextBox((100,370,250,30), command=self.change_text_color, clear_on_enter=True, inactive_on_enter=False, active=False)
     input_list = [email_input, username_input, password_input]
+    """
 	# Screen Commands:
 	login_runner = True
 	# Input selector key:

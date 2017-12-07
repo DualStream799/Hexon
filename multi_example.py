@@ -1,11 +1,11 @@
 import os
 import sys
 import pygame
-
 from textbox import TextBox
 
 
 KEY_REPEAT_SETTING = (200,70)
+login_page_original = pygame.image.load(r'.\Images\Background\signup_page_original.png')
 
 
 class Control(object):
@@ -17,30 +17,31 @@ class Control(object):
         self.clock = pygame.time.Clock()
         self.fps = 60.0
         self.done = False
-        email_color = TextBox((100,100,250,30), command=self.change_color, clear_on_enter=True, inactive_on_enter=False)
-        username_color = TextBox((100,150,250,30), command=self.change_text_color, clear_on_enter=True, inactive_on_enter=False, active=False)
-        password_color = TextBox((100,370,250,30), command=self.change_text_color, clear_on_enter=True, inactive_on_enter=False, active=False)
+        useremail_input = TextBox((85,278,305,45), command=self.save_input(text_type='email'), clear_on_enter=True, inactive_on_enter=False)
+        username_input = TextBox((85,364,305,45), command=self.save_input(text_type='text'), clear_on_enter=True, inactive_on_enter=False, active=False)
+        password_input = TextBox((85,453,305,45), command=self.save_input(text_type='text'), clear_on_enter=True, inactive_on_enter=False, active=False)
         self.prompts = self.make_prompts()
-        self.inputs = [email_color, username_color, password_color]
-        self.color = (100,100,100)
+        self.inputs = [useremail_input, username_input, password_input]
+        self.color = (100, 100, 100)
+        
         pygame.key.set_repeat(*KEY_REPEAT_SETTING)
 
-    def make_prompts(self, color=pygame.Color("white")):
+    def make_prompts(self, color=pygame.Color("gray")):
         rendered = []
-        font = pygame.font.SysFont("arial", 20)
+        font = pygame.font.SysFont("01 Digitall", 20)
 
-        message = 'Username: (A-Z 0-9 Space)'
+        message = 'EMAIL: (A-Z 0-9 Space @ - _ .)'
         rend = font.render(message, True, color)
-        rendered.append((rend, rend.get_rect(topleft=(10,35))))
+        rendered.append((rend, rend.get_rect(topleft=(15,244))))
 
-        message = 'Email: (A-Z 0-9 Space @ - _ .)'
+        message = 'USERNAME: (A-Z 0-9 Space)'
         rend = font.render(message, True, color)
-        rendered.append((rend, rend.get_rect(topleft=(10,215))))
+        rendered.append((rend, rend.get_rect(topleft=(15,331))))
 
-        message = 'Password: (A-Z 0-9 - _ .)'
+        message = 'PASSWORD: (A-Z 0-9 - _ .)'
         rend = font.render(message, True, color)
-        rendered.append((rend, rend.get_rect(topleft=(10,315))))
-
+        rendered.append((rend, rend.get_rect(topleft=(10,420))))
+        print(rendered)
         return rendered
 
     def event_loop(self):
@@ -49,6 +50,20 @@ class Control(object):
                 self.done = True
             for box in self.inputs:
                 box.get_event(event)
+
+
+
+    def save_input(self, id, info, text_type='text'):
+        self.input_data = []
+        if text_type == 'email':
+            if '@' not in info:
+                print("Please input a valid email")
+            else:
+                self.input_data.append(str(info))
+        if text_type == 'text':
+            self.input_data.append(str(info))
+
+
 
     def change_color(self, id, color):
         try:
@@ -66,7 +81,7 @@ class Control(object):
             print("Please input a valid color name.")
 
     def render(self):
-        self.screen.fill(self.color)
+        self.screen.blit(login_page_original, (0, 0))
 
         for box in self.inputs:
             box.draw(self.screen)
@@ -82,6 +97,7 @@ class Control(object):
             self.render()
             pygame.display.update()
             self.clock.tick(self.fps)
+        print(self.input_data)
 
 
 if __name__ == "__main__":
