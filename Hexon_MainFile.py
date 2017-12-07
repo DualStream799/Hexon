@@ -28,6 +28,7 @@ import sys
 import os
 # External libraries:
 from textbox import TextBox
+import pygame_functions as pyfunc
 
 # --------------------------------- INICIALIZATION ---------------------------------------------- #
 
@@ -338,13 +339,22 @@ class Collider:
 		if self.orientation == 'a' or self.orientation == 'left':
 			self.pos_x = -100
 			self.pos_y = randint(1, display_width)
-
+		if self.orientation == 's' or self.orientation == 'down':
+			self.pos_x = random.randint(1, display_height)
+			self.pos_y = display_width
+		if self.orientation == 'd' or self.orientation == 'right':
+			self.pos_x = display_height
+			self.pos_y = random.randint(1, display_width)
 		# Rotation angle (used to rotate the image and make it pointing to the planets center):
-		self.angle = - degrees(atan((display_width/2 - self.pos_y)/(display_height/2 - self.pos_x))) + 180
+		if self.orientation == 'a' or self.orientation == 'left' or self.orientation == 's' or self.orientation == 'down':
+			self.angle = - degrees(atan((display_width/2 - self.pos_y)/(display_height/2 - self.pos_x))) + 180
+		if self.orientation == 'd' or self.orientation == 'right' or self.orientation == 'w' or self.orientation == 'up':
+			self.angle = - degrees(atan((display_width/2 - self.pos_y)/(display_height/2 - self.pos_x)))
+
 		if self.mode == 'n' or self.mode == 'normal':
-			self.speed = 5
-		if self.mode == 'f' or self.mode == 'fast':
 			self.speed = 10
+		if self.mode == 'f' or self.mode == 'fast':
+			self.speed = 5
 		if self.mode == 's' or self.mode == 'ship':
 			pass
 		print('angle: ', self.angle)
@@ -352,8 +362,8 @@ class Collider:
 		# Calculating trajectory:
 		self.pos_index = 1
 		self.trajectory = collider_trajectory([self.pos_x - display_height/2, - self.pos_y + display_width/2, 0, 0], step=self.speed*10)
-		print((self.trajectory[0][::10]))
-		print((self.trajectory[1][::10]))
+		print(len((self.trajectory[0][:])))
+		print(len((self.trajectory[1][:])))
 
 	def display(self):
 		'''Rotate image and show it on screen'''
@@ -367,23 +377,27 @@ class Collider:
 		self.pos_x = self.list_x[self.pos_index]
 		self.pos_y = self.list_y[self.pos_index]
 		self.pos_index += 1
-		if self.pos_index == 49:
-			self.pos_index = 49
+		if self.pos_index == (len(self.trajectory[0][:]) - 1):
+			reset_pos()
 
 	def collision(self):
-		if self.pos_x < 100 or self.pos_y < 100:
-			reset_pos()
-		
-
-	def reset_pos(self):
-		if collision(self) == True:
+		if self.pos_x < 100 and self.pos_y < 100:
 			if self.orientation == 'w' or self.orientation == 'up':
 				self.pos_x = random.randint(1, display_height)
 				self.pos_y = 0
 			if self.orientation == 'a' or self.orientation == 'left':
 				self.pos_x = 0
 				self.pos_y = random.randint(1, display_width)
+			if self.orientation == 's' or self.orientation == 'down':
+				self.pos_x = random.randint(1, display_height)
+				self.pos_y = display_width
+			if self.orientation == 'd' or self.orientation == 'right':
+				self.pos_x = display_height
+				self.pos_y = random.randint(1, display_width)
+		
 
+	def reset_pos(self):
+		pass
 				
 
 # Barrier Class (Object User controled):
@@ -512,6 +526,7 @@ def LoginPage():
     password_input = TextBox((100,370,250,30), command=self.change_text_color, clear_on_enter=True, inactive_on_enter=False, active=False)
     input_list = [email_input, username_input, password_input]
     """
+
 	# Screen Commands:
 	login_runner = True
 	# Input selector key:
@@ -520,6 +535,8 @@ def LoginPage():
 	# User data list: 
 	username_input = []
 	useremail_input = []
+
+	shift_state=0
 	# Main Loop:
 	while login_runner:	
 		for event in pygame.event.get():
@@ -547,11 +564,15 @@ def LoginPage():
 					print('1')
 				# 2 Key Command:
 				if event.key == pygame.K_2 or event.key == pygame.K_KP2:
-					if username_control == True:
-						username_input.append('2')
-					if useremail_control == True:
-						useremail_input.append('2')
-					print('2')
+					if not shift_state:
+						if username_control == True:
+							username_input.append('2')
+						if useremail_control == True:
+							useremail_input.append('2')
+						print('2')
+					else:
+						print(1234)
+						shift_state=0
 				# 3 Key Command:
 				if event.key == pygame.K_3 or event.key == pygame.K_KP3:
 					if username_control == True:
@@ -788,7 +809,6 @@ def LoginPage():
 					print('Z')
 
 
-
 			# Keyboard OTHER CHARACTERES Input:
 
 				# Space Key Command:
@@ -799,12 +819,16 @@ def LoginPage():
 						pass
 					print(' ')
 				# At Key Command:
-				if (event.key == pygame.K_2 and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_SPACE and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						pass
-					if useremail_control == True:
-						useremail_input.append('@')
-					print('@')	
+				if event.key == pygame.K_RSHIFT or event.key == pygame.K_LSHIFT:
+					print(123)
+					shift_state=1
+					if event.key == pygame.K_2 or event.key == pygame.K_KP2:
+
+						if username_control == True:
+							pass
+						if useremail_control == True:
+							useremail_input.append('@')
+						print('aaaaa\@')	
 				# Dot Key Command:
 				if (event.key == pygame.K_2 & event.key == pygame.KMOD_RSHIFT) or (event.key == pygame.K_SPACE and event.key == pygame.K_LSHIFT):
 					if username_control == True:
@@ -819,12 +843,6 @@ def LoginPage():
 					if useremail_control == True:
 						useremail_input.append('-')
 					print('-')
-
-
-
-
-
-
 
 			# Other Commands:
 
@@ -947,7 +965,7 @@ def PausePage():
 		screen.blit(but_pause_no, (but_pause_no_pos[0][0], but_pause_no_pos[0][1]))
 		# Screen commands:
 		for event in pygame.event.get():
-			# Quit Command (Calls 'GameEnd' function): 
+			# Quit Command (Calls 'GameEnd' function):
 			if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
 				pause_runner = False
 
@@ -976,7 +994,30 @@ def PausePage():
 
 
 def ProfilePage():
-	pass
+	# Loop Controler:
+	profile_runner = True
+	# Profile Loop:
+	while profile_runner:
+		screen.blit(game_space, (0, 0))
+		# Screen commands:
+		for event in pygame.event.get():
+			# Quit Command (Calls 'GameEnd' function): 
+			if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
+				profile_runner = False
+
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				# Mouse Position (axis x and -y coordinates):
+				mouse_pos_x, mouse_pos_y = event.pos
+				# Mouse Tracking:
+				print(mouse_pos_x, mouse_pos_y)
+
+
+
+
+		# Atualizating Screen:
+		pygame.display.update()
+		# Frame Rate Update (current rate: 60fps):
+		clock.tick(60)
 
 
 def LoadingPage():
@@ -998,20 +1039,24 @@ def GamePage():
 	index_barrier_pos = 0
 	barrier_runner = True
 	# Colliders pre-settings:
-	coll00 = Collider(fast_comet_original, 'a', 'n')
+	coll00 = Collider(fast_comet_original, 'd', 'n')
+	coll01 = Collider(fast_comet_original, 'a', 'n')
+	coll02 = Collider(fast_comet_original, 's', 'n')
+	coll03 = Collider(fast_comet_original, 'd', 'n')
 
 	# Game Loop
 	while game_runner:
 		rotating_planet = image_rotation_centered(planet_original, planet_angle)
 		rotating_barrier = image_rotation_centered(cursor_purple, barrier_angle)
 		# Loading Home Page (showing all the elements which compose the menu):
-		coll00.display()
+
 		screen.blit(game_space, (0, 0))
 		screen.blit(but_pause, (but_pause_pos[0][0], but_pause_pos[0][1])) 
 		screen.blit(planet_original, (planet_pos[0][0], planet_pos[0][1]))
 		screen.blit(rotating_planet, (planet_pos[0][0], planet_pos[0][1]))
 		screen.blit(rotating_barrier, (cursor_x_pos[index_barrier_pos], cursor_y_pos[index_barrier_pos]))
 		coll00.display()
+
 		# Screen Commands:
 		for event in pygame.event.get():
 			# Quit Command (Calls 'GameEnd' function): 
@@ -1062,11 +1107,11 @@ def GamePage():
 		if barrier_angle >= 360:
 			barrier_angle = 0
 		elif barrier_runner == True:
-			barrier_angle += 1
-			index_barrier_pos -= 1
+			barrier_angle += 2
+			index_barrier_pos -= 2
 		elif barrier_runner == False:
-			barrier_angle -= 1
-			index_barrier_pos += 1	
+			barrier_angle -= 2
+			index_barrier_pos += 2	
 		# Barrier Continuous Translation (reset index position counter):
 		if index_barrier_pos < 0:
 			index_barrier_pos = len(cursor_x_pos) - 1
@@ -1092,7 +1137,7 @@ def GameEnd():
 # --------------------------------- EXECUTION ------------------------------------------------ #
 
 
-HomePage()
+LoginPage()
 
 # ----------------------------------- IDEAS ------------------------------------------------- #
 
