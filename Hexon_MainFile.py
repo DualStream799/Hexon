@@ -330,9 +330,10 @@ def collider_trajectory(init_values, step):
 
 
 def GameInput():
-		pass
+	pass
 
-
+def Collision():
+	pass
 # ------------------------------ OBJECTS CLASSES ---------------------------------------------- #
 
 
@@ -404,9 +405,24 @@ class Collider:
 		self.pos_x = self.list_x[self.pos_index]
 		self.pos_y = self.list_y[self.pos_index]
 		self.pos_index += 1
+		print(self.pos_x, self.pos_y)
 		if self.pos_index == (len(self.trajectory[0][:]) - 1):
-			reset_pos()
-
+			collision_planet()
+	def collision_planet(self):
+		if self.orientation == 'w' or self.orientation == 'up':
+			self.pos_x = random.randint(1, display_height)
+			self.pos_y = 0
+		if self.orientation == 'a' or self.orientation == 'left':
+			self.pos_x = 0
+			self.pos_y = random.randint(1, display_width)
+		if self.orientation == 's' or self.orientation == 'down':
+			self.pos_x = random.randint(1, display_height)
+			self.pos_y = display_width
+		if self.orientation == 'd' or self.orientation == 'right':
+			self.pos_x = display_height
+			self.pos_y = random.randint(1, display_width)
+		print('collision_on Barrirer')
+				
 	def collision(self):
 		if self.pos_x < 100 and self.pos_y < 100:
 			if self.orientation == 'w' or self.orientation == 'up':
@@ -421,11 +437,9 @@ class Collider:
 			if self.orientation == 'd' or self.orientation == 'right':
 				self.pos_x = display_height
 				self.pos_y = random.randint(1, display_width)
-		return 'collision_on'
+		print('collision_on Barrirer')
 
-	def reset_pos(self):
-		pass
-				
+
 
 # Barrier Class (Object User controled):
 class Barrier:
@@ -1941,7 +1955,8 @@ def GamePage():
 					screen.blit(but_pressed, (but_pause_pos[0][0], but_pause_pos[0][1]))
 					print("Pause Clicked")
 					PausePage()
-
+#		if pygame.sprite.collide_circle(rotating_planet.get_rect(), rotating_barrier.get_rect()) == True:
+#			print("Collision Detected")
 		if PausePage == False:
 			game_runner = False
 		# Atualizating Screen:
@@ -1987,7 +2002,7 @@ def GameEnd():
 # --------------------------------- EXECUTION ------------------------------------------------ #
 
 
-SignUpPage()
+HomePage()
 
 # ----------------------------------- IDEAS ------------------------------------------------- #
 

@@ -1,4 +1,5 @@
 import json
+import pygame
 from pprint import pprint
 
 """# Loading and reading JSON file:
@@ -86,4 +87,5 @@ class PlayersData(object):
 		with open('../Players Data/players_profile.json', 'w') as json_file:
 			json.dump(self.players_data, json_file)
 
-PlayersData().log_player('DualStream799', 'DualStream799')
+# PlayersData().log_player('DualStream799', 'DualStream799')
+print(help(pygame.sprite.collide_circle))
