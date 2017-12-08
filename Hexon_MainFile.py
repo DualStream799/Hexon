@@ -55,34 +55,61 @@ clock = pygame.time.Clock()
 # ------------------------------------ IMAGES ------------------------------------------------- #
 
 
-# Letters:
-# letter_a = pygame.image.load(r'.\Images\Alphabet\letter_a.png')
-# letter_b = pygame.image.load(r'.\Images\Alphabet\letter_b.png')
-# letter_c = pygame.image.load(r'.\Images\Alphabet\letter_c.png')
-# letter_d = pygame.image.load(r'.\Images\Alphabet\letter_d.png')
-# letter_e = pygame.image.load(r'.\Images\Alphabet\letter_e.png')
-# letter_f = pygame.image.load(r'.\Images\Alphabet\letter_f.png')
-# letter_g = pygame.image.load(r'.\Images\Alphabet\letter_g.png')
-# letter_h = pygame.image.load(r'.\Images\Alphabet\letter_h.png')
-# letter_i = pygame.image.load(r'.\Images\Alphabet\letter_i.png')
-# letter_j = pygame.image.load(r'.\Images\Alphabet\letter_j.png')
-# letter_k = pygame.image.load(r'.\Images\Alphabet\letter_k.png')
-# letter_l = pygame.image.load(r'.\Images\Alphabet\letter_l.png')
-# letter_m = pygame.image.load(r'.\Images\Alphabet\letter_m.png')
-# letter_n = pygame.image.load(r'.\Images\Alphabet\letter_n.png')
-# letter_o = pygame.image.load(r'.\Images\Alphabet\letter_o.png')
-# letter_p = pygame.image.load(r'.\Images\Alphabet\letter_p.png')
-# letter_q = pygame.image.load(r'.\Images\Alphabet\letter_q.png')
-# letter_r = pygame.image.load(r'.\Images\Alphabet\letter_r.png')
-# letter_s = pygame.image.load(r'.\Images\Alphabet\letter_s.png')
-# letter_t = pygame.image.load(r'.\Images\Alphabet\letter_t.png')
-# letter_u = pygame.image.load(r'.\Images\Alphabet\letter_u.png')
-# letter_v = pygame.image.load(r'.\Images\Alphabet\letter_v.png')
-# letter_w = pygame.image.load(r'.\Images\Alphabet\letter_w.png')
-# letter_x = pygame.image.load(r'.\Images\Alphabet\letter_x.png')
-# letter_y = pygame.image.load(r'.\Images\Alphabet\letter_y.png')
-# letter_z = pygame.image.load(r'.\Images\Alphabet\letter_z.png')
+# Letters LowerCase:
+# letter_a = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_a.png')
+# letter_b = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_b.png')
+# letter_c = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_c.png')
+# letter_d = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_d.png')
+# letter_e = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_e.png')
+# letter_f = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_f.png')
+# letter_g = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_g.png')
+# letter_h = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_h.png')
+# letter_i = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_i.png')
+# letter_j = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_j.png')
+# letter_k = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_k.png')
+# letter_l = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_l.png')
+# letter_m = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_m.png')
+# letter_n = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_n.png')
+# letter_o = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_o.png')
+# letter_p = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_p.png')
+# letter_q = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_q.png')
+# letter_r = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_r.png')
+# letter_s = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_s.png')
+# letter_t = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_t.png')
+# letter_u = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_u.png')
+# letter_v = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_v.png')
+# letter_w = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_w.png')
+# letter_x = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_x.png')
+# letter_y = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_y.png')
+# letter_z = pygame.image.load(r'.\Images\Alphabet\Lowercase\letter_z.png')
 
+# Letters Capital:
+letter_A = pygame.image.load(r'.\Images\Alphabet\Capital\letter_A.png')
+letter_B = pygame.image.load(r'.\Images\Alphabet\Capital\letter_B.png')
+letter_C = pygame.image.load(r'.\Images\Alphabet\Capital\letter_C.png')
+letter_D = pygame.image.load(r'.\Images\Alphabet\Capital\letter_D.png')
+letter_E = pygame.image.load(r'.\Images\Alphabet\Capital\letter_E.png')
+letter_F = pygame.image.load(r'.\Images\Alphabet\Capital\letter_F.png')
+letter_G = pygame.image.load(r'.\Images\Alphabet\Capital\letter_G.png')
+letter_H = pygame.image.load(r'.\Images\Alphabet\Capital\letter_H.png')
+letter_I = pygame.image.load(r'.\Images\Alphabet\Capital\letter_I.png')
+letter_J = pygame.image.load(r'.\Images\Alphabet\Capital\letter_J.png')
+letter_K = pygame.image.load(r'.\Images\Alphabet\Capital\letter_K.png')
+letter_L = pygame.image.load(r'.\Images\Alphabet\Capital\letter_L.png')
+letter_M = pygame.image.load(r'.\Images\Alphabet\Capital\letter_M.png')
+letter_N = pygame.image.load(r'.\Images\Alphabet\Capital\letter_N.png')
+letter_O = pygame.image.load(r'.\Images\Alphabet\Capital\letter_O.png')
+letter_P = pygame.image.load(r'.\Images\Alphabet\Capital\letter_P.png')
+letter_Q = pygame.image.load(r'.\Images\Alphabet\Capital\letter_Q.png')
+letter_R = pygame.image.load(r'.\Images\Alphabet\Capital\letter_R.png')
+letter_S = pygame.image.load(r'.\Images\Alphabet\Capital\letter_S.png')
+letter_T = pygame.image.load(r'.\Images\Alphabet\Capital\letter_T.png')
+letter_U = pygame.image.load(r'.\Images\Alphabet\Capital\letter_U.png')
+letter_V = pygame.image.load(r'.\Images\Alphabet\Capital\letter_v.png')
+letter_W = pygame.image.load(r'.\Images\Alphabet\Capital\letter_W.png')
+letter_X = pygame.image.load(r'.\Images\Alphabet\Capital\letter_X.png')
+letter_Y = pygame.image.load(r'.\Images\Alphabet\Capital\letter_y.png')
+letter_Z = pygame.image.load(r'.\Images\Alphabet\Capital\letter_Z.png')
 
 # Numbers:
 # number_0 = pygame.image.load(r'.\Images\Alphabet\number_0.png')
@@ -394,7 +421,7 @@ class Collider:
 			if self.orientation == 'd' or self.orientation == 'right':
 				self.pos_x = display_height
 				self.pos_y = random.randint(1, display_width)
-		
+		return 'collision_on'
 
 	def reset_pos(self):
 		pass
@@ -511,34 +538,32 @@ cursor_x_pos = orbital_trajectory(117)[:, 0] + int((display_height - 121)/2)
 cursor_y_pos = orbital_trajectory(117)[:, 1] + int((display_width - 121)/2)
 
 
-# ------------------------------------- LOGIN PAGE ---------------------------------------------- #
+# ------------------------------------- SIGN UP PAGE ---------------------------------------------- #
 
 
 # Main loop
-def LoginPage():
+def SignUpPage():
 	# Loading Home Page (showing all the elements which compose the menu):
 	screen.blit(login_page_original, (0, 0))
 	screen.blit(but_pause_yes, (but_login_confirm[0][0] , but_login_confirm[0][1]))
-	#
-	""" 
-	email_input = TextBox((100,100,250,30), command=self.change_color, clear_on_enter=True, inactive_on_enter=False)
-    username_input = TextBox((100,150,250,30), command=self.change_text_color, clear_on_enter=True, inactive_on_enter=False, active=False)
-    password_input = TextBox((100,370,250,30), command=self.change_text_color, clear_on_enter=True, inactive_on_enter=False, active=False)
-    input_list = [email_input, username_input, password_input]
-    """
-
+	
 	# Screen Commands:
-	login_runner = True
+	signup_runner = True
 	# Input selector key:
 	username_control = True 
 	useremail_control = True
+	userpassword_control = True
 	# User data list: 
 	username_input = []
 	useremail_input = []
-
-	shift_state=0
+	userpassword_input = []
+	# Special Keys Controlers:
+	shift_pressed = False
 	# Main Loop:
-	while login_runner:	
+	while signup_runner:	
+		
+		
+
 		for event in pygame.event.get():
 			# Quit Command (Calls 'GameEnd' function):
 			if event.type == pygame.QUIT:
@@ -547,309 +572,608 @@ def LoginPage():
 			if event.type == pygame.KEYDOWN:
 
 			# Keyboard NUMBERS Input:
-
 				# 0 Key Command:
 				if event.key == pygame.K_0 or event.key == pygame.K_KP0:
 					if username_control == True:
 						username_input.append('0')
 					if useremail_control == True:
 						useremail_input.append('0')
-					print('0')
+					if userpassword_control == True:
+						userpassword_input.append('0')
 				# 1 Key Command:
 				if event.key == pygame.K_1 or event.key == pygame.K_KP1:
 					if username_control == True:
 						username_input.append('1')
 					if useremail_control == True:
 						useremail_input.append('1')
-					print('1')
+					if userpassword_control == True:
+						userpassword_input.append('1')
 				# 2 Key Command:
 				if event.key == pygame.K_2 or event.key == pygame.K_KP2:
-					if not shift_state:
+					# At ('@') Input:
+					if shift_press == True:
+						if username_control == True:
+							pass
+						if useremail_control == True:
+							useremail_input.append('@')
+						if userpassword_control == True:
+							pass
+						shift_press = False
+					# Two ('2') Input:
+					else:
 						if username_control == True:
 							username_input.append('2')
 						if useremail_control == True:
 							useremail_input.append('2')
-						print('2')
-					else:
-						print(1234)
-						shift_state=0
+						if userpassword_control == True:
+							userpassword_input.append('2')
 				# 3 Key Command:
 				if event.key == pygame.K_3 or event.key == pygame.K_KP3:
 					if username_control == True:
 						username_input.append('3')
 					if useremail_control == True:
 						useremail_input.append('3')
-					print('3')
+					if userpassword_control == True:
+						userpassword_input.append('3')
 				# 4 Key Command:
 				if event.key == pygame.K_4 or event.key == pygame.K_KP4:
 					if username_control == True:
 						username_input.append('4')
 					if useremail_control == True:
 						useremail_input.append('4')
-					print('4')
+					if userpassword_control == True:
+						userpassword_input.append('4')
 				# 5 Key Command:
 				if event.key == pygame.K_5 or event.key == pygame.K_KP5:
 					if username_control == True:
 						username_input.append('5')
 					if useremail_control == True:
 						useremail_input.append('5')
-					print('5')
+					if userpassword_control == True:
+						userpassword_input.append('5')
 				# 6 Key Command:
 				if event.key == pygame.K_6 or event.key == pygame.K_KP6:
 					if username_control == True:
 						username_input.append('6')
 					if useremail_control == True:
 						useremail_input.append('6')
-					print('6')
+					if userpassword_control == True:
+						userpassword_input.append('6')
 				# 7 Key Command:
 				if event.key == pygame.K_7 or event.key == pygame.K_KP7:
 					if username_control == True:
 						username_input.append('7')
 					if useremail_control == True:
 						useremail_input.append('7')
-					print('7')
+					if userpassword_control == True:
+						userpassword_input.append('7')
 				# 8 Key Command:
 				if event.key == pygame.K_8 or event.key == pygame.K_KP8:
 					if username_control == True:
 						username_input.append('8')
 					if useremail_control == True:
 						useremail_input.append('8')
-					print('8')
+					if userpassword_control == True:
+						userpassword_input.append('8')
 				# 9 Key Command:
 				if event.key == pygame.K_9 or event.key == pygame.K_KP9:
 					if username_control == True:
 						username_input.append('9')
 					if useremail_control == True:
 						useremail_input.append('9')
-					print('9')
+					if userpassword_control == True:
+						userpassword_input.append('9')
 
 			# Keyboard LETTERS Input:
-
 				# A Key Command:
-				if event.key == pygame.K_a or (event.key == pygame.K_a and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_a and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('A')
-					if useremail_control == True:
-						useremail_input.append('A')
-					print('A')
+				if event.key == pygame.K_a:
+					# A Capital ('A') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('A')
+						if useremail_control == True:
+							useremail_input.append('A')
+						if userpassword_control == True:
+							userpassword_input.append('A')
+						shift_press = False
+					# A Lowercase ('a') Input:
+					else:
+						if username_control == True:
+							username_input.append('a')
+						if useremail_control == True:
+							useremail_input.append('a')
+						if userpassword_control == True:
+							userpassword_input.append('a')
 				# B Key Command:
-				if event.key == pygame.K_b or (event.key == pygame.K_b and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_b and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('B')
-					if useremail_control == True:
-						useremail_input.append('B')
-					print('B')
+				if event.key == pygame.K_b:
+					# B Capital ('B') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('B')
+						if useremail_control == True:
+							useremail_input.append('B')
+						if userpassword_control == True:
+							userpassword_input.append('B')
+						shift_press = False
+					# B Lowercase ('b') Input:
+					else:
+						if username_control == True:
+							username_input.append('b')
+						if useremail_control == True:
+							useremail_input.append('b')
+						if userpassword_control == True:
+							userpassword_input.append('b')
 				# C Key Command:
-				if event.key == pygame.K_c or (event.key == pygame.K_c and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_c and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('C')
-					if useremail_control == True:
-						useremail_input.append('C')
-					print('C')
+				if event.key == pygame.K_c:
+					# C Capital ('C') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('C')
+						if useremail_control == True:
+							useremail_input.append('C')
+						if userpassword_control == True:
+							userpassword_input.append('C')
+					# C Lowercase ('c') Input:
+					else:
+						if username_control == True:
+							username_input.append('C')
+						if useremail_control == True:
+							useremail_input.append('C')
+						if userpassword_control == True:
+							userpassword_input.append('C')
 				# D Key Command:
-				if event.key == pygame.K_d or (event.key == pygame.K_d and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_d and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('D')
-					if useremail_control == True:
-						useremail_input.append('D')
-					print('D')
+				if event.key == pygame.K_d:
+					# D Capital ('D') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('D')
+						if useremail_control == True:
+							useremail_input.append('D')
+						if userpassword_control == True:
+							userpassword_input.append('D')
+					# D Lowercase ('d') Input:
+					else:
+						if username_control == True:
+							username_input.append('d')
+						if useremail_control == True:
+							useremail_input.append('d')
+						if userpassword_control == True:
+							userpassword_input.append('d')
 				# E Key Command:
-				if event.key == pygame.K_e or (event.key == pygame.K_e and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_e and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('E')
-					if useremail_control == True:
-						useremail_input.append('E')
-					print('E')
+				if event.key == pygame.K_e:
+					# E Capital ('E') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('E')
+						if useremail_control == True:
+							useremail_input.append('E')
+						if userpassword_control == True:
+							userpassword_input.append('E')
+					# E Lowercase ('e') Input:
+					else:
+						if username_control == True:
+							username_input.append('e')
+						if useremail_control == True:
+							useremail_input.append('e')
+						if userpassword_control == True:
+							userpassword_input.append('e')
 				# F Key Command:
-				if event.key == pygame.K_f or (event.key == pygame.K_f and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_f and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('F')
-					if useremail_control == True:
-						useremail_input.append('F')
-					print('F')
+				if event.key == pygame.K_f:
+					# F Capital ('F') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('F')
+						if useremail_control == True:
+							useremail_input.append('F')
+						if userpassword_control == True:
+							userpassword_input.append('F')
+					# F Lowercase ('f') Input:
+					else:
+						if username_control == True:
+							username_input.append('f')
+						if useremail_control == True:
+							useremail_input.append('f')
+						if userpassword_control == True:
+							userpassword_input.append('f')
 				# G Key Command:
-				if event.key == pygame.K_g or (event.key == pygame.K_g and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_g and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('G')
-					if useremail_control == True:
-						useremail_input.append('G')
-					print('G')
+				if event.key == pygame.K_g:
+					# G Capital ('G') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('G')
+						if useremail_control == True:
+							useremail_input.append('G')
+						if userpassword_control == True:
+							userpassword_input.append('G')
+					# G Lowercase ('g') Input:
+					else:
+						if username_control == True:
+							username_input.append('g')
+						if useremail_control == True:
+							useremail_input.append('g')
+						if userpassword_control == True:
+							userpassword_input.append('g')
 				# H Key Command:
-				if event.key == pygame.K_h or (event.key == pygame.K_h and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_h and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('H')
-					if useremail_control == True:
-						useremail_input.append('H')
-					print('H')
+				if event.key == pygame.K_h:
+					# H Capital ('H') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('H')
+						if useremail_control == True:
+							useremail_input.append('H')
+						if userpassword_control == True:
+							userpassword_input.append('H')
+					# H Lowercase ('h') Input:
+					else:
+						if username_control == True:
+							username_input.append('h')
+						if useremail_control == True:
+							useremail_input.append('h')
+						if userpassword_control == True:
+							userpassword_input.append('h')
 				# I Key Command:
-				if event.key == pygame.K_i or (event.key == pygame.K_i and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_i and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('I')
-					if useremail_control == True:
-						useremail_input.append('I')
-					print('I')
+				if event.key == pygame.K_i:
+					# I Capital ('I') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('I')
+						if useremail_control == True:
+							useremail_input.append('I')
+						if userpassword_control == True:
+							userpassword_input.append('I')
+					# I Lowercase ('i') Input:
+					else:
+						if username_control == True:
+							username_input.append('i')
+						if useremail_control == True:
+							useremail_input.append('i')
+						if userpassword_control == True:
+							userpassword_input.append('i')
 				# J Key Command:
-				if event.key == pygame.K_j or (event.key == pygame.K_j and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_j and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('J')
-					if useremail_control == True:
-						useremail_input.append('J')
-					print('J')
+				if event.key == pygame.K_j:
+					# J Capital ('J') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('J')
+						if useremail_control == True:
+							useremail_input.append('J')
+						if userpassword_control == True:
+							userpassword_input.append('J')
+					# J Lowercase ('j') Input:
+					else:
+						if username_control == True:
+							username_input.append('j')
+						if useremail_control == True:
+							useremail_input.append('j')
+						if userpassword_control == True:
+							userpassword_input.append('j')
 				# K Key Command:
-				if event.key == pygame.K_k or (event.key == pygame.K_k and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_k and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('K')
-					if useremail_control == True:
-						useremail_input.append('K')
-					print('K')
+				if event.key == pygame.K_k:
+					# K Capital ('K') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('K')
+						if useremail_control == True:
+							useremail_input.append('K')
+						if userpassword_control == True:
+							userpassword_input.append('K')
+					# K Lowercase ('k') Input:
+					else:
+						if username_control == True:
+							username_input.append('k')
+						if useremail_control == True:
+							useremail_input.append('k')
+						if userpassword_control == True:
+							userpassword_input.append('k')
 				# L Key Command:
-				if event.key == pygame.K_l or (event.key == pygame.K_l and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_l and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('L')
-					if useremail_control == True:
-						useremail_input.append('L')
-					print('L')
+				if event.key == pygame.K_l:
+					# L Capital ('L') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('L')
+						if useremail_control == True:
+							useremail_input.append('L')
+						if userpassword_control == True:
+							userpassword_input.append('L')
+					# L Lowercase ('l') Input:
+					else:
+						if username_control == True:
+							username_input.append('l')
+						if useremail_control == True:
+							useremail_input.append('l')
+						if userpassword_control == True:
+							userpassword_input.append('l')
 				# M Key Command:
-				if event.key == pygame.K_m or (event.key == pygame.K_m and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_m and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('M')
-					if useremail_control == True:
-						useremail_input.append('M')
-					print('M')
+				if event.key == pygame.K_m:
+					# M Capital ('M') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('M')
+						if useremail_control == True:
+							useremail_input.append('M')
+						if userpassword_control == True:
+							userpassword_input.append('M')
+					# M Lowercase ('m') Input:
+					else:
+						if username_control == True:
+							username_input.append('m')
+						if useremail_control == True:
+							useremail_input.append('m')
+						if userpassword_control == True:
+							userpassword_input.append('m')
 				# N Key Command:
-				if event.key == pygame.K_n or (event.key == pygame.K_n and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_n and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('N')
-					if useremail_control == True:
-						useremail_input.append('N')
-					print('N')
+				if event.key == pygame.K_n:
+					# N Capital ('N') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('N')
+						if useremail_control == True:
+							useremail_input.append('N')
+						if userpassword_control == True:
+							userpassword_input.append('N')
+					# N Lowercase ('n') Input:
+					else:
+						if username_control == True:
+							username_input.append('n')
+						if useremail_control == True:
+							useremail_input.append('n')
+						if userpassword_control == True:
+							userpassword_input.append('n')
 				# O Key Command:
-				if event.key == pygame.K_o or (event.key == pygame.K_o and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_o and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('O')
-					if useremail_control == True:
-						useremail_input.append('O')
-					print('O')
+				if event.key == pygame.K_o:
+					# O Capital ('O') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('O')
+						if useremail_control == True:
+							useremail_input.append('O')
+						if userpassword_control == True:
+							userpassword_input.append('O')
+					# O Lowercase ('o') Input:
+					else:
+						if username_control == True:
+							username_input.append('o')
+						if useremail_control == True:
+							useremail_input.append('o')
+						if userpassword_control == True:
+							userpassword_input.append('o')
 				# P Key Command:
-				if event.key == pygame.K_p or (event.key == pygame.K_p and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_p and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('P')
-					if useremail_control == True:
-						useremail_input.append('P')
-					print('P')
+				if event.key == pygame.K_p:
+					# P Capital ('P') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('P')
+						if useremail_control == True:
+							useremail_input.append('P')
+						if userpassword_control == True:
+							userpassword_input.append('P')
+					# L Lowercase ('l') Input:
+					else:
+						if username_control == True:
+							username_input.append('p')
+						if useremail_control == True:
+							useremail_input.append('p')
+						if userpassword_control == True:
+							userpassword_input.append('p')
 				# Q Key Command:
-				if event.key == pygame.K_q or (event.key == pygame.K_q and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_q and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('Q')
-					if useremail_control == True:
-						useremail_input.append('Q')
-					print('Q')
+				if event.key == pygame.K_q:
+					# Q Capital ('Q') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('Q')
+						if useremail_control == True:
+							useremail_input.append('Q')
+						if userpassword_control == True:
+							userpassword_input.append('Q')
+					# Q Lowercase ('q') Input:
+					else:
+						if username_control == True:
+							username_input.append('q')
+						if useremail_control == True:
+							useremail_input.append('q')
+						if userpassword_control == True:
+							userpassword_input.append('q')
 				# R Key Command:
-				if event.key == pygame.K_r or (event.key == pygame.K_r and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_r and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('R')
-					if useremail_control == True:
-						useremail_input.append('R')
-					print('R')
+				if event.key == pygame.K_r:
+					# R Capital ('R') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('R')
+						if useremail_control == True:
+							useremail_input.append('R')
+						if userpassword_control == True:
+							userpassword_input.append('R')
+					# R Lowercase ('r') Input:
+					else:
+						if username_control == True:
+							username_input.append('r')
+						if useremail_control == True:
+							useremail_input.append('r')
+						if userpassword_control == True:
+							userpassword_input.append('r')
 				# S Key Command:
-				if event.key == pygame.K_s or (event.key == pygame.K_s and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_s and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('S')
-					if useremail_control == True:
-						useremail_input.append('S')
-					print('S')
+				if event.key == pygame.K_s:
+					# S Capital ('S') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('S')
+						if useremail_control == True:
+							useremail_input.append('S')
+						if userpassword_control == True:
+							userpassword_input.append('S')
+					# S Lowercase ('s') Input:
+					else:
+						if username_control == True:
+							username_input.append('s')
+						if useremail_control == True:
+							useremail_input.append('s')
+						if userpassword_control == True:
+							userpassword_input.append('s')
 				# T Key Command:
-				if event.key == pygame.K_t or (event.key == pygame.K_t and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_t and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('T')
-					if useremail_control == True:
-						useremail_input.append('T')
-					print('T')
+				if event.key == pygame.K_t:
+					# T Capital ('T') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('T')
+						if useremail_control == True:
+							useremail_input.append('T')
+						if userpassword_control == True:
+							userpassword_input.append('T')
+					# T Lowercase ('t') Input:
+					else:
+						if username_control == True:
+							username_input.append('t')
+						if useremail_control == True:
+							useremail_input.append('t')
+						if userpassword_control == True:
+							userpassword_input.append('t')
 				# U Key Command:
-				if event.key == pygame.K_u or (event.key == pygame.K_u and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_u and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('U')
-					if useremail_control == True:
-						useremail_input.append('U')
-					print('U')
+				if event.key == pygame.K_u:
+					# U Capital ('U') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('U')
+						if useremail_control == True:
+							useremail_input.append('U')
+						if userpassword_control == True:
+							userpassword_input.append('U')
+					# U Lowercase ('u') Input:
+					else:
+						if username_control == True:
+							username_input.append('u')
+						if useremail_control == True:
+							useremail_input.append('u')
+						if userpassword_control == True:
+							userpassword_input.append('u')
 				# V Key Command:
-				if event.key == pygame.K_v or (event.key == pygame.K_v and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_v and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('V')
-					if useremail_control == True:
-						useremail_input.append('V')
-					print('V')
+				if event.key == pygame.K_v:
+					# V Capital ('V') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('V')
+						if useremail_control == True:
+							useremail_input.append('V')
+						if userpassword_control == True:
+							userpassword_input.append('V')
+					# V Lowercase ('v') Input:
+					else:
+						if username_control == True:
+							username_input.append('v')
+						if useremail_control == True:
+							useremail_input.append('v')
+						if userpassword_control == True:
+							userpassword_input.append('v')
 				# W Key Command:
-				if event.key == pygame.K_w or (event.key == pygame.K_w and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_w and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('W')
-					if useremail_control == True:
-						useremail_input.append('W')
-					print('W')
+				if event.key == pygame.K_w:
+					# W Capital ('W') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('W')
+						if useremail_control == True:
+							useremail_input.append('W')
+						if userpassword_control == True:
+							userpassword_input.append('W')
+					# W Lowercase ('w') Input:
+					else:
+						if username_control == True:
+							username_input.append('w')
+						if useremail_control == True:
+							useremail_input.append('w')
+						if userpassword_control == True:
+							userpassword_input.append('w')
 				# X Key Command:
-				if event.key == pygame.K_x or (event.key == pygame.K_x and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_x and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('X')
-					if useremail_control == True:
-						useremail_input.append('X')
-					print('X')
+				if event.key == pygame.K_x:
+					# X Capital ('X') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('X')
+						if useremail_control == True:
+							useremail_input.append('X')
+						if userpassword_control == True:
+							userpassword_input.append('X')
+					# X Lowercase ('x') Input:
+					else:
+						if username_control == True:
+							username_input.append('x')
+						if useremail_control == True:
+							useremail_input.append('x')
+						if userpassword_control == True:
+							userpassword_input.append('x')
 				# Y Key Command:
-				if event.key == pygame.K_y or (event.key == pygame.K_y and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_y and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('Y')
-					if useremail_control == True:
-						useremail_input.append('Y')
-					print('Y')
+				if event.key == pygame.K_y:
+					# Y Capital ('Y') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('Y')
+						if useremail_control == True:
+							useremail_input.append('Y')
+						if userpassword_control == True:
+							userpassword_input.append('Y')
+					# Y Lowercase ('y') Input:
+					else:
+						if username_control == True:
+							username_input.append('y')
+						if useremail_control == True:
+							useremail_input.append('y')
+						if userpassword_control == True:
+							userpassword_input.append('y')
 				# Z Key Command:
-				if event.key == pygame.K_z or (event.key == pygame.K_z and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_z and event.key == pygame.K_LSHIFT):
-					if username_control == True:
-						username_input.append('Z')
-					if useremail_control == True:
-						useremail_input.append('Z')
-					print('Z')
-
+				if event.key == pygame.K_z:
+					# Z Capital ('Z') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('Z')
+						if useremail_control == True:
+							useremail_input.append('Z')
+						if userpassword_control == True:
+							userpassword_input.append('Z')
+					# Z Lowercase ('z') Input:
+					else:
+						if username_control == True:
+							username_input.append('z')
+						if useremail_control == True:
+							useremail_input.append('z')
+						if userpassword_control == True:
+							userpassword_input.append('z')
 
 			# Keyboard OTHER CHARACTERES Input:
-
 				# Space Key Command:
-				if event.key == pygame.K_SPACE or (event.key == pygame.K_SPACE and event.key == pygame.K_RSHIFT) or (event.key == pygame.K_SPACE and event.key == pygame.K_LSHIFT):
+				if event.key == pygame.K_SPACE:
+					# Space (' ') Input:		
 					if username_control == True:
 						username_input.append(' ')
 					if useremail_control == True:
 						pass
-					print(' ')
-				# At Key Command:
-				if event.key == pygame.K_RSHIFT or event.key == pygame.K_LSHIFT:
-					print(123)
-					shift_state=1
-					if event.key == pygame.K_2 or event.key == pygame.K_KP2:
-
-						if username_control == True:
-							pass
-						if useremail_control == True:
-							useremail_input.append('@')
-						print('aaaaa\@')	
+					if userpassword_control == True:
+						pass
 				# Dot Key Command:
-				if (event.key == pygame.K_2 & event.key == pygame.KMOD_RSHIFT) or (event.key == pygame.K_SPACE and event.key == pygame.K_LSHIFT):
+				if event.key == pygame.K_PERIOD or event.key == pygame.K_KP_PERIOD:
+					# Dot Capital ('.') Input:
 					if username_control == True:
 						pass
 					if useremail_control == True:
 						useremail_input.append('.')
-					print('.')	
+					if userpassword_control == True:
+						userpassword_input.append('.')
 				# Hifen Key Command:
-				if event.key == pygame.K_MINUS:
+				if event.key == pygame.K_MINUS or event.key == pygame.K_KP_MINUS:
 					if username_control == True:
 						pass
 					if useremail_control == True:
 						useremail_input.append('-')
-					print('-')
+					if userpassword_control == True:
+						userpassword_input.append('-')
 
-			# Other Commands:
-
+			# Keyborad SPECIAL KEYS Input:
+				# Shift Keys Command:
+				if event.key == pygame.K_RSHIFT or event.key == pygame.K_LSHIFT:
+					shift_press = True
+					print('Shift pressed')
 				# Enter Keys Command:
 				if event.key == pygame.K_KP_ENTER or event.key == pygame.K_RETURN:
 					print(username_input)
 					print(useremail_input)
+					print(userpassword_input)
 				# Delete Last Letter Command:
 				if event.key == pygame.K_BACKSPACE:
 					if username_control == True:
@@ -862,10 +1186,536 @@ def LoginPage():
 							del useremail_input[-1]
 						except:
 							pass
+					if userpassword_control == True:
+						try:
+							del username_input[-1]
+						except:
+							pass
 				# Exit Command:
 				if event.key == pygame.K_ESCAPE:
 					GameEnd()
 
+		# Atualizating Screen:
+		pygame.display.update()
+		# Frame Rate Update (current rate: 60fps):
+		clock.tick(60)
+
+# ------------------------------------- LOGIN PAGE ---------------------------------------------- #
+
+
+# Main loop
+def LoginPage():
+	# Loading Home Page (showing all the elements which compose the menu):
+	screen.blit(login_page_original, (0, 0))
+	screen.blit(but_pause_yes, (but_login_confirm[0][0] , but_login_confirm[0][1]))
+	
+	# Screen Commands:
+	login_runner = True
+	# Input selector key:
+	username_control = True 
+	userpassword_control = True
+	# User data list: 
+	username_input = []
+	userpassword_input = []
+	# Special Keys Controlers:
+	shift_press = False
+	# Main Loop:
+	while login_runner:	
+		for event in pygame.event.get():
+			# Quit Command (Calls 'GameEnd' function):
+			if event.type == pygame.QUIT:
+				GameEnd()
+			# Keyboard Click Detection (and cosequential actions, depending where/what is clicked):
+			if event.type == pygame.KEYDOWN:
+
+			# Keyboard NUMBERS Input:
+				# 0 Key Command:
+				if event.key == pygame.K_0 or event.key == pygame.K_KP0:
+					if username_control == True:
+						username_input.append('0')
+					if userpassword_control == True:
+						userpassword_input.append('0')
+				# 1 Key Command:
+				if event.key == pygame.K_1 or event.key == pygame.K_KP1:
+					if username_control == True:
+						username_input.append('1')
+					if userpassword_control == True:
+						userpassword_input.append('1')
+				# 2 Key Command:
+				if event.key == pygame.K_2 or event.key == pygame.K_KP2:
+					# At ('@') Input:
+					if shift_press == True:
+						if username_control == True:
+							pass
+						if userpassword_control == True:
+							pass
+						shift_press = False
+					# Two ('2') Input:
+					else:
+						if username_control == True:
+							username_input.append('2')
+						if userpassword_control == True:
+							userpassword_input.append('2')
+				# 3 Key Command:
+				if event.key == pygame.K_3 or event.key == pygame.K_KP3:
+					if username_control == True:
+						username_input.append('3')
+					if userpassword_control == True:
+						userpassword_input.append('3')
+				# 4 Key Command:
+				if event.key == pygame.K_4 or event.key == pygame.K_KP4:
+					if username_control == True:
+						username_input.append('4')
+					if userpassword_control == True:
+						userpassword_input.append('4')
+				# 5 Key Command:
+				if event.key == pygame.K_5 or event.key == pygame.K_KP5:
+					if username_control == True:
+						username_input.append('5')
+					if userpassword_control == True:
+						userpassword_input.append('5')
+				# 6 Key Command:
+				if event.key == pygame.K_6 or event.key == pygame.K_KP6:
+					if username_control == True:
+						username_input.append('6')
+					if userpassword_control == True:
+						userpassword_input.append('6')
+				# 7 Key Command:
+				if event.key == pygame.K_7 or event.key == pygame.K_KP7:
+					if username_control == True:
+						username_input.append('7')
+					if userpassword_control == True:
+						userpassword_input.append('7')
+				# 8 Key Command:
+				if event.key == pygame.K_8 or event.key == pygame.K_KP8:
+					if username_control == True:
+						username_input.append('8')
+					if userpassword_control == True:
+						userpassword_input.append('8')
+				# 9 Key Command:
+				if event.key == pygame.K_9 or event.key == pygame.K_KP9:
+					if username_control == True:
+						username_input.append('9')
+					if userpassword_control == True:
+						userpassword_input.append('9')
+
+			# Keyboard LETTERS Input:
+				# A Key Command:
+				if event.key == pygame.K_a:
+					# A Capital ('A') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('A')
+						if userpassword_control == True:
+							userpassword_input.append('A')
+						shift_press = False
+					# A Lowercase ('a') Input:
+					else:
+						if username_control == True:
+							username_input.append('a')
+						if userpassword_control == True:
+							userpassword_input.append('a')
+				# B Key Command:
+				if event.key == pygame.K_b:
+					# B Capital ('B') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('B')
+						if userpassword_control == True:
+							userpassword_input.append('B')
+						shift_press = False
+					# B Lowercase ('b') Input:
+					else:
+						if username_control == True:
+							username_input.append('b')
+						if userpassword_control == True:
+							userpassword_input.append('b')
+				# C Key Command:
+				if event.key == pygame.K_c:
+					# C Capital ('C') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('C')
+						if userpassword_control == True:
+							userpassword_input.append('C')
+					# C Lowercase ('c') Input:
+					else:
+						if username_control == True:
+							username_input.append('C')
+						if userpassword_control == True:
+							userpassword_input.append('C')
+				# D Key Command:
+				if event.key == pygame.K_d:
+					# D Capital ('D') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('D')
+						if userpassword_control == True:
+							userpassword_input.append('D')
+					# D Lowercase ('d') Input:
+					else:
+						if username_control == True:
+							username_input.append('d')
+						if userpassword_control == True:
+							userpassword_input.append('d')
+				# E Key Command:
+				if event.key == pygame.K_e:
+					# E Capital ('E') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('E')
+						if userpassword_control == True:
+							userpassword_input.append('E')
+					# E Lowercase ('e') Input:
+					else:
+						if username_control == True:
+							username_input.append('e')
+						if userpassword_control == True:
+							userpassword_input.append('e')
+				# F Key Command:
+				if event.key == pygame.K_f:
+					# F Capital ('F') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('F')
+						if userpassword_control == True:
+							userpassword_input.append('F')
+					# F Lowercase ('f') Input:
+					else:
+						if username_control == True:
+							username_input.append('f')
+						if userpassword_control == True:
+							userpassword_input.append('f')
+				# G Key Command:
+				if event.key == pygame.K_g:
+					# G Capital ('G') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('G')
+						if userpassword_control == True:
+							userpassword_input.append('G')
+					# G Lowercase ('g') Input:
+					else:
+						if username_control == True:
+							username_input.append('g')
+						if userpassword_control == True:
+							userpassword_input.append('g')
+				# H Key Command:
+				if event.key == pygame.K_h:
+					# H Capital ('H') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('H')
+						if userpassword_control == True:
+							userpassword_input.append('H')
+					# H Lowercase ('h') Input:
+					else:
+						if username_control == True:
+							username_input.append('h')
+						if userpassword_control == True:
+							userpassword_input.append('h')
+				# I Key Command:
+				if event.key == pygame.K_i:
+					# I Capital ('I') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('I')
+						if userpassword_control == True:
+							userpassword_input.append('I')
+					# I Lowercase ('i') Input:
+					else:
+						if username_control == True:
+							username_input.append('i')
+						if userpassword_control == True:
+							userpassword_input.append('i')
+				# J Key Command:
+				if event.key == pygame.K_j:
+					# J Capital ('J') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('J')
+						if userpassword_control == True:
+							userpassword_input.append('J')
+					# J Lowercase ('j') Input:
+					else:
+						if username_control == True:
+							username_input.append('j')
+						if userpassword_control == True:
+							userpassword_input.append('j')
+				# K Key Command:
+				if event.key == pygame.K_k:
+					# K Capital ('K') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('K')
+						if userpassword_control == True:
+							userpassword_input.append('K')
+					# K Lowercase ('k') Input:
+					else:
+						if username_control == True:
+							username_input.append('k')
+						if userpassword_control == True:
+							userpassword_input.append('k')
+				# L Key Command:
+				if event.key == pygame.K_l:
+					# L Capital ('L') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('L')
+						if userpassword_control == True:
+							userpassword_input.append('L')
+					# L Lowercase ('l') Input:
+					else:
+						if username_control == True:
+							username_input.append('l')
+						if userpassword_control == True:
+							userpassword_input.append('l')
+				# M Key Command:
+				if event.key == pygame.K_m:
+					# M Capital ('M') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('M')
+						if userpassword_control == True:
+							userpassword_input.append('M')
+					# M Lowercase ('m') Input:
+					else:
+						if username_control == True:
+							username_input.append('m')
+						if userpassword_control == True:
+							userpassword_input.append('m')
+				# N Key Command:
+				if event.key == pygame.K_n:
+					# N Capital ('N') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('N')
+						if userpassword_control == True:
+							userpassword_input.append('N')
+					# N Lowercase ('n') Input:
+					else:
+						if username_control == True:
+							username_input.append('n')
+						if userpassword_control == True:
+							userpassword_input.append('n')
+				# O Key Command:
+				if event.key == pygame.K_o:
+					# O Capital ('O') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('O')
+						if userpassword_control == True:
+							userpassword_input.append('O')
+					# O Lowercase ('o') Input:
+					else:
+						if username_control == True:
+							username_input.append('o')
+						if userpassword_control == True:
+							userpassword_input.append('o')
+				# P Key Command:
+				if event.key == pygame.K_p:
+					# P Capital ('P') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('P')
+						if userpassword_control == True:
+							userpassword_input.append('P')
+					# L Lowercase ('l') Input:
+					else:
+						if username_control == True:
+							username_input.append('p')
+						if userpassword_control == True:
+							userpassword_input.append('p')
+				# Q Key Command:
+				if event.key == pygame.K_q:
+					# Q Capital ('Q') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('Q')
+						if userpassword_control == True:
+							userpassword_input.append('Q')
+					# Q Lowercase ('q') Input:
+					else:
+						if username_control == True:
+							username_input.append('q')
+						if userpassword_control == True:
+							userpassword_input.append('q')
+				# R Key Command:
+				if event.key == pygame.K_r:
+					# R Capital ('R') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('R')
+						if userpassword_control == True:
+							userpassword_input.append('R')
+					# R Lowercase ('r') Input:
+					else:
+						if username_control == True:
+							username_input.append('r')
+						if userpassword_control == True:
+							userpassword_input.append('r')
+				# S Key Command:
+				if event.key == pygame.K_s:
+					# S Capital ('S') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('S')
+						if userpassword_control == True:
+							userpassword_input.append('S')
+					# S Lowercase ('s') Input:
+					else:
+						if username_control == True:
+							username_input.append('s')
+						if userpassword_control == True:
+							userpassword_input.append('s')
+				# T Key Command:
+				if event.key == pygame.K_t:
+					# T Capital ('T') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('T')
+						if userpassword_control == True:
+							userpassword_input.append('T')
+					# T Lowercase ('t') Input:
+					else:
+						if username_control == True:
+							username_input.append('t')
+						if userpassword_control == True:
+							userpassword_input.append('t')
+				# U Key Command:
+				if event.key == pygame.K_u:
+					# U Capital ('U') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('U')
+						if userpassword_control == True:
+							userpassword_input.append('U')
+					# U Lowercase ('u') Input:
+					else:
+						if username_control == True:
+							username_input.append('u')
+						if userpassword_control == True:
+							userpassword_input.append('u')
+				# V Key Command:
+				if event.key == pygame.K_v:
+					# V Capital ('V') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('V')
+						if userpassword_control == True:
+							userpassword_input.append('V')
+					# V Lowercase ('v') Input:
+					else:
+						if username_control == True:
+							username_input.append('v')
+						if userpassword_control == True:
+							userpassword_input.append('v')
+				# W Key Command:
+				if event.key == pygame.K_w:
+					# W Capital ('W') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('W')
+						if userpassword_control == True:
+							userpassword_input.append('W')
+					# W Lowercase ('w') Input:
+					else:
+						if username_control == True:
+							username_input.append('w')
+						if userpassword_control == True:
+							userpassword_input.append('w')
+				# X Key Command:
+				if event.key == pygame.K_x:
+					# X Capital ('X') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('X')
+						if useremail_control == True:
+							useremail_input.append('X')
+						if userpassword_control == True:
+							userpassword_input.append('X')
+					# X Lowercase ('x') Input:
+					else:
+						if username_control == True:
+							username_input.append('x')
+						if useremail_control == True:
+							useremail_input.append('x')
+						if userpassword_control == True:
+							userpassword_input.append('x')
+				# Y Key Command:
+				if event.key == pygame.K_y:
+					# Y Capital ('Y') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('Y')
+						if userpassword_control == True:
+							userpassword_input.append('Y')
+					# Y Lowercase ('y') Input:
+					else:
+						if username_control == True:
+							username_input.append('y')
+						if userpassword_control == True:
+							userpassword_input.append('y')
+				# Z Key Command:
+				if event.key == pygame.K_z:
+					# Z Capital ('Z') Input:
+					if shift_press == True:
+						if username_control == True:
+							username_input.append('Z')
+						if userpassword_control == True:
+							userpassword_input.append('Z')
+					# Z Lowercase ('z') Input:
+					else:
+						if username_control == True:
+							username_input.append('z')
+						if userpassword_control == True:
+							userpassword_input.append('z')
+
+			# Keyboard OTHER CHARACTERES Input:
+				# Space Key Command:
+				if event.key == pygame.K_SPACE:
+					# Space (' ') Input:		
+					if username_control == True:
+						username_input.append(' ')
+					if userpassword_control == True:
+						pass
+				# Dot Key Command:
+				if event.key == pygame.K_PERIOD or event.key == pygame.K_KP_PERIOD:
+					# Dot Capital ('.') Input:
+					if username_control == True:
+						pass
+					if userpassword_control == True:
+						userpassword_input.append('.')
+				# Hifen Key Command:
+				if event.key == pygame.K_MINUS or event.key == pygame.K_KP_MINUS:
+					if username_control == True:
+						pass
+					if userpassword_control == True:
+						userpassword_input.append('-')
+
+			# Keyborad SPECIAL KEYS Input:
+				# Shift Keys Command:
+				if event.key == pygame.K_RSHIFT or event.key == pygame.K_LSHIFT:
+					shift_press = True
+					print('Shift pressed')
+
+				# Enter Keys Command:
+				if event.key == pygame.K_KP_ENTER or event.key == pygame.K_RETURN:
+					print(username_input)
+					print(userpassword_input)
+
+				# Delete Last Letter Command:
+				if event.key == pygame.K_BACKSPACE:
+					if username_control == True:
+						try:
+							del username_input[-1]
+						except:
+							pass
+					if userpassword_control == True:
+						try:
+							del userpassword_input[-1]
+						except:
+							pass
 		# Atualizating Screen:
 		pygame.display.update()
 		# Frame Rate Update (current rate: 60fps):
@@ -1137,7 +1987,7 @@ def GameEnd():
 # --------------------------------- EXECUTION ------------------------------------------------ #
 
 
-LoginPage()
+SignUpPage()
 
 # ----------------------------------- IDEAS ------------------------------------------------- #
 
