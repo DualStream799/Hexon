@@ -1,7 +1,7 @@
 import json
 from pprint import pprint
 
-# Loading and reading JSON file:
+"""# Loading and reading JSON file:
 with open('Players Data/players_profile.json') as json_file:
 	players_data = json.load(json_file)
 
@@ -40,3 +40,50 @@ players_data[new_username] = {new_password: {'Email': new_email,
 # Saving data on JSON file:
 with open('Players Data/players_profile.json', 'w') as json_file:
 	json.dump(players_data, json_file)
+
+"""
+
+
+class PlayersData(object):
+	""""""
+	def __init__(self):
+		"""Loading and reading JSON file:"""
+		with open('../Players Data/players_profile.json') as json_file:
+			self.players_data = json.load(json_file)
+	
+	def log_player(self, input_username, input_password):
+		"""Trying to connect with database, check data and log in"""
+		try:
+			self.players_data[input_username]
+			print('username accepted')
+			try:	
+				self.players_data[input_username][input_password]
+				print('password accepted')
+				print('logged')
+			except KeyError:
+				print("Invalid Password")
+			except Exception:
+				print("Unknown error\nPlease contact support")
+
+		except KeyError:
+			print("Invalid Username")
+		except Exception:
+				print("Unknown error\nPlease contact support")
+
+
+	def load_new_player(self, new_username, new_email, new_password):
+		"""Organizing new data in JSON format (a dictionary of dictionaries):"""
+		self.players_data[new_username] = {new_password: {'Email': new_email,
+													   	  'HX$': 0,
+														  'HighScore': 0,
+														  'XP': 0,
+														  'Level': 0,
+														  'Status': 'Player',
+														  'TimePlayed': 0}}
+
+	def saveJSON(self):
+		"""Loading and saving data on JSON file:"""
+		with open('../Players Data/players_profile.json', 'w') as json_file:
+			json.dump(self.players_data, json_file)
+
+PlayersData().log_player('DualStream799', 'DualStream799')

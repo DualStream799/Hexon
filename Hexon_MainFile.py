@@ -1755,7 +1755,7 @@ def HomePage():
 				# Enter Command (Calls 'GameEnd' function):
 				if event.key == pygame.K_SPACE:
 					GamePage()
-			# Mouse Click Detection (and cosequential actions, depending where/what is clicked):
+			# Mouse Click Detection (and consequential actions, depending where/what is clicked):
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				# Mouse Position (axis x and -y coordinates):
 				mouse_pos_x, mouse_pos_y = event.pos
